@@ -1,10 +1,5 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { size, mqMin, mqMax, mqRange } from '../style/mq';
-import { color } from '../style/color';
-import { vwChange, vwRange } from '../style/vw';
-import { font } from '../style/font';
-import { Link } from 'react-router-dom';
 
 const FooterContainer = styled.footer`
   flex: 1 1 100%;

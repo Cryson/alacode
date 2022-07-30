@@ -1,9 +1,7 @@
 import { useEffect, useRef } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import gsap from 'gsap';
 import { color } from '../style/color';
-import { breakpoints, mqMin } from '../style/mq';
-import { vwRange } from '../style/vw';
 import { font } from '../style/font';
 
 const Wrapper = styled.div`

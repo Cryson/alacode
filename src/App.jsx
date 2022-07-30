@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import ReactLoading from 'react-loading';
 import styled from 'styled-components';
-import gsap from 'gsap';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Sidebar } from './components/Sidebar.jsx';
 import { Footer } from './components/Footer.jsx';

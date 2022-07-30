@@ -1,5 +1,3 @@
-import React from 'react';
-
 import serviceHplp from '../images/service/service-hplp.svg';
 import serviceWp from '../images/service/service-wp.svg';
 import serviceWebdesign from '../images/service/service-webdesign.svg';

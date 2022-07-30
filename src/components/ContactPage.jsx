@@ -11,42 +11,6 @@ import { ColorContainer } from './ColorContainer';
 import { fruitsData } from './fruitsData';
 import imgMail from '../images/contact-mail.svg';
 
-// const ContactContainer = styled.div`
-//   width: 100%;
-//   height: 1020px;
-//   ${mqMin(breakpoints.md)} {
-//     height: 1050px;
-//   };
-//   .container {
-//     display: flex;
-//     align-items: center;
-//     flex-wrap: wrap;
-//     height: 100%;
-//     overflow: hidden;
-
-//     position: relative;
-//     z-index: 1;
-//     width: 100%;
-//     height: 100%;
-//     margin: 310px auto 0;
-//     background: ${color.purpleMauve};
-//   }
-//   .light {
-//     content: '';
-//     display: none;
-//     position: absolute;
-//     top: -50%;
-//     left: -50%;
-//     z-index: 1;
-//     width: 200%;
-//     height: 200%;
-//     background: ${color.purpleMauve};
-//     opacity: 0;
-//     transition: 0.3s opacity ease-in-out;
-//     mix-blend-mode: screen;
-//     filter: blur(10px);
-//   }
-// `;
 const Header = styled.div`
   display: flex;
   justify-content: center;

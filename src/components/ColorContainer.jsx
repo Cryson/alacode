@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 import { color } from '../style/color';
 import { breakpoints, mqMin } from '../style/mq';
 import { vwRange } from '../style/vw';
-import { font } from '../style/font';
 
 const Wrapper = styled.div`
   width: 100%;

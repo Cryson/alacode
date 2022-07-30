@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import gsap from 'gsap';
 import { color } from '../style/color';
 import { font } from '../style/font';
-import { vwRange } from '../style/vw';
 import { breakpoints, mqMax, mqMin } from '../style/mq';
 import { Body } from './Body';
 import { ColorTitle } from './ColorTitle';
@@ -17,51 +16,6 @@ import "swiper/scss/effect-coverflow";
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 
-// const ItemsContainer = styled.div`
-//   width: 100%;
-//   height: 480px;
-//   ${mqMin(breakpoints.sm)} {
-//     ${vwRange('height', 480, 680, 560, 960)}
-//   }
-//   ${mqMin(breakpoints.md)} {
-//     height: 680px;
-//   };
-//   .container {
-//     position: relative;
-//     z-index: 1;
-//     width: 100%;
-//     height: 100%;
-//     margin: 310px auto 0;
-//     background: ${color.yellowGamboge};
-//   }
-//   .light {
-//     content: '';
-//     display: none;
-//     position: absolute;
-//     top: -50%;
-//     left: -50%;
-//     z-index: 1;
-//     width: 200%;
-//     height: 200%;
-//     background: ${color.yellowGamboge};
-//     opacity: 0;
-//     transition: 0.3s opacity ease-in-out;
-//     mix-blend-mode: screen;
-//     filter: blur(10px);
-//   }
-//   .curtain {
-//     content: '';
-//     position: absolute;
-//     bottom: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 50%;
-//     background: ${color.grayEclipse};
-//     ${mqMin(breakpoints.sm)} {
-//       height: 50%;
-//     }
-//   }
-// `;
 const Overflow = styled.div`
   display: flex;
   align-items: center;

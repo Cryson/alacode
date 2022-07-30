@@ -1,8 +1,5 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 import { color } from '../style/color';
-import { font } from '../style/font';
-import { vw } from '../style/vw';
 import { breakpoints, mqMin } from '../style/mq';
 
 export const Body = styled.main`
