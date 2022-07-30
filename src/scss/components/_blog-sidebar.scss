@@ -1,0 +1,26 @@
+@use '../global' as g;
+
+.blog-sidebar {
+  flex: 1 1 100%;
+  padding-top: 80px;
+  @include g.mq-min {
+    flex: 0 1 25%;
+    max-width: 320px;
+    padding: 0 0 0 80px;
+    text-align: right;
+  }
+  > .title {
+    margin-bottom: 1em;
+    font-size: 2rem;
+  }
+  > .menus {
+    margin-bottom: 40px;
+  }
+  > .menus > .menu {
+    margin-bottom: 1em;
+    @include g.mq-max {
+      padding-left: 0.5em;
+      margin-bottom: 2em;
+    }
+  }
+}

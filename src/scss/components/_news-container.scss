@@ -1,0 +1,55 @@
+@use '../global' as g;
+
+.news-container {
+  width: 100%;
+  margin-bottom: 40px;
+  @include g.mq-min {
+    margin-bottom: 80px;
+  }
+  > .post {
+    width: 100%;
+    border-bottom: 1px solid g.$yellow-ironside;
+  }
+  > .post:first-child {
+    border-top: 1px solid g.$yellow-ironside;    
+  }
+  > .post > .link {
+    display: flex;
+    flex-wrap: wrap;
+    // justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 2em 2vw;
+    @include g.mq-min {
+      padding: 2em;
+    }
+  }
+  > .post > .link > .date,
+  > .post > .link > .category {
+    width: auto;
+    line-height: 2;
+    margin: 0;
+  }
+  > .post > .link > .date {
+    @include g.mq-max {
+      margin-right: 1.5em;
+    }
+    @include g.mq-min {
+      flex: 0 1 15%;
+    }
+  }
+  > .post > .link > .category {
+    @include g.mq-min {
+      flex: 0 1 20%;
+    }
+  }
+  > .post > .link > .title {
+    flex: 1 1 100%;
+    @include g.mq-min {
+      flex: 0 1 65%;
+    }
+  }
+  > .lists > .list > .text:first-child {
+    background: 0 -0.4em/100% 2.5em  linear-gradient(-180deg, (rgba(g.$yellow-ironside, 0) 0%, rgba(g.$yellow-ironside, 0) 98%, rgba(100,100,100,100) 100%)) repeat-y;
+  }
+}

@@ -1,0 +1,75 @@
+import React, { useState, useEffect, useRef } from 'react';
+import ReactLoading from 'react-loading';
+import styled from 'styled-components';
+import gsap from 'gsap';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Sidebar } from './components/Sidebar.jsx';
+import { Footer } from './components/Footer.jsx';
+import { TopPage } from './components/TopPage.jsx';
+import { ProfilePage } from './components/ProfilePage.jsx';
+import { SkillPage } from './components/SkillPage.jsx';
+import { ServicePage } from './components/ServicePage.jsx';
+import { ItemsPage } from './components/ItemsPage.jsx';
+import { ContactPage } from './components/ContactPage.jsx';
+import { LoadingCube } from './components/LoadingCube';
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1280px;
+  background: inherit;
+`;
+const MouseStalker = styled.div`
+  width: 0;
+  height: 0;
+  #mouse-stalker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    pointer-events: none;
+    fill: rgba(255, 255, 255, 0.4);
+  }
+`;
+
+export const App = () => {
+  const mouseDots = useRef();
+  const [complete, setComplete] = useState(false);
+
+  useEffect(() => {
+    setComplete(true);
+
+    // setTimeout(() => {
+    //   setComplete(true);
+    // }, 2000);
+  }, []);
+
+  return (
+    <Router>
+      <MouseStalker>
+        <svg id="mouse-stalker" ref={mouseDots} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80.5 80.5"><g id="grid"><path className="cls-1" d="M70.25 50.25h10v10h-10zM70.25 40.25h10v10h-10zM70.25 30.25h10v10h-10zM70.25 20.25h10v10h-10zM60.25 60.25h10v10h-10zM60.25 50.25h10v10h-10zM60.25 40.25h10v10h-10zM60.25 30.25h10v10h-10zM60.25 20.25h10v10h-10zM60.25 10.25h10v10h-10zM50.25 70.25h10v10h-10zM50.25 60.25h10v10h-10zM50.25 50.25h10v10h-10zM50.25 40.25h10v10h-10zM50.25 30.25h10v10h-10zM50.25 20.25h10v10h-10zM50.25 10.25h10v10h-10zM50.25.25h10v10h-10zM40.25 70.25h10v10h-10zM40.25 60.25h10v10h-10zM40.25 50.25h10v10h-10zM40.25 40.25h10v10h-10zM40.25 30.25h10v10h-10zM40.25 20.25h10v10h-10zM40.25 10.25h10v10h-10zM40.25.25h10v10h-10zM30.25 70.25h10v10h-10zM30.25 60.25h10v10h-10zM30.25 50.25h10v10h-10zM30.25 40.25h10v10h-10zM30.25 30.25h10v10h-10zM30.25 20.25h10v10h-10zM30.25 10.25h10v10h-10zM30.25.25h10v10h-10zM20.25 70.25h10v10h-10zM20.25 60.25h10v10h-10zM20.25 50.25h10v10h-10zM20.25 40.25h10v10h-10zM20.25 30.25h10v10h-10zM20.25 20.25h10v10h-10zM20.25 10.25h10v10h-10zM20.25.25h10v10h-10zM10.25 60.25h10v10h-10zM10.25 50.25h10v10h-10zM10.25 40.25h10v10h-10zM10.25 30.25h10v10h-10zM10.25 20.25h10v10h-10zM10.25 10.25h10v10h-10zM.25 50.25h10v10h-10zM.25 40.25h10v10h-10zM.25 30.25h10v10h-10zM.25 20.25h10v10h-10z" /></g></svg>
+      </MouseStalker>
+      {complete &&
+        <Wrapper>
+          <Routes>
+            <Route path="/" element={<TopPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/skill" element={<SkillPage />} />
+            <Route path="/service" element={<ServicePage />} />
+            <Route path="/items" element={<ItemsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+          <Sidebar />
+          <Footer />
+        </Wrapper>}
+      <LoadingCube complete={complete} />
+    </Router>
+  );
+}
