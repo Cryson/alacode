@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import gsap from 'gsap';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Sidebar } from './components/Sidebar.jsx';
 import { Footer } from './components/Footer.jsx';
@@ -44,9 +45,15 @@ export const App = () => {
   useEffect(() => {
     setComplete(true);
 
-    // setTimeout(() => {
-    //   setComplete(true);
-    // }, 2000);
+    document.addEventListener('mousemove', (e) => {
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+      gsap.to(mouseDots.current, {
+        x: mouseX,
+        y: mouseY,
+        duration: 0.35
+      });
+    });
   }, []);
 
   return (
