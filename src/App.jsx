@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import gsap from 'gsap';
 import { LoadingContext } from './components/Context';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { breakpoints, mqMax } from './style/mq';
 import { Sidebar } from './components/Sidebar.jsx';
 import { Footer } from './components/Footer.jsx';
 import { TopPage } from './components/TopPage.jsx';
@@ -27,6 +28,9 @@ const Wrapper = styled.div`
 const MouseStalker = styled.div`
   width: 0;
   height: 0;
+  ${mqMax(breakpoints.sm)} {
+    display: none;
+  }
   #mouse-stalker {
     position: fixed;
     top: 0;
