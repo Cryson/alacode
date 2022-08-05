@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, createContext } from 'react';
 import styled from 'styled-components';
 import gsap from 'gsap';
 import { color } from '../style/color';
@@ -49,7 +49,9 @@ const Light = styled.div`
   filter: blur(10px);
 `
 
-export const LoadingCube = ({ complete }) => {
+export const LoadingFinish = createContext();
+
+export const LoadingCube = ({ complete, setHoge }) => {
   const wrapperRef = useRef();
   const textRef = useRef();
   const cubesRef = useRef();
@@ -61,14 +63,14 @@ export const LoadingCube = ({ complete }) => {
     complete ?
       tl.to([textRef.current, cubesRef.current], {
         opacity: 0,
-      })
-        .to(wrapperRef.current, {
-          display: 'none',
-          x: '100%'
-        })
+      }).to(wrapperRef.current, {
+        display: 'none',
+        x: '100%'
+      }).call(() => { setHoge(true) }, [], '<+=0.5')
       :
       tl.from(cubesRef.current, {
         opacity: 0,
+        duration: 0.3,
       })
         .add('go')
         .to(q('.cube'), {
@@ -93,7 +95,7 @@ export const LoadingCube = ({ complete }) => {
             repeat: 1,
             yoyo: true,
           }
-        }, 'go')
+        }, 'go');
   }, [complete])
 
   return (

@@ -3,6 +3,7 @@ import imgBouguya from '../images/items/items-bouguya.png';
 import imgCb from '../images/items/items-cb.png';
 import imgDoes from '../images/items/items-does.png';
 import imgHg from '../images/items/items-hg.png';
+import imgMentor from '../images/items/items-mentor@2x.png';
 import imgNomijoshi from '../images/items/items-nomijoshi.png';
 import imgSalways from '../images/items/items-salways.png';
 import imgTrinity from '../images/items/items-trinity.png';
@@ -55,6 +56,9 @@ export const itemsData = [
   },
   {
     title: '飲み女子セレクション', id: 'nomijoshi', image: imgNomijoshi, alt: '飲み女子セレクション ホームページリニューアル', tags: [tagsData.coding, tagsData.other], url: 'https://nomihosu.com/',
+  },
+  {
+    title: 'メンター活動', id: 'mentor', image: imgMentor, alt: 'メンタリングサービス メンター活動', tags: [tagsData.other],
   },
   {
     title: 'YSstudio 様', id: 'ysstudio', image: imgYsstudio, alt: 'YSstudio 様 ホームページ制作', tags: [tagsData.design, tagsData.coding, tagsData.writing, tagsData.wordpress], url: 'https://sakanagano.com',

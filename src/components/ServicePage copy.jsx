@@ -67,20 +67,18 @@ const ServiceMenu = styled.nav`
   }
 `;
 const ServiceSection = styled.section`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 160px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 160px;
+    > .texts {
+      flex: 1 1 50%;
+      position: relative;
+      max-width: 400px;
+  } 
   &:nth-child(2n) > .texts {
     order: 1;
-  }
-  .texts {
-    flex: 1 1 50%;
-    position: relative;
-    ${mqMin(breakpoints.sm)} {
-      max-width: 400px;
-    }
   }
   .texts > h3 {
     margin-bottom: 1em;
@@ -98,17 +96,15 @@ const ServiceSection = styled.section`
     font-weight: 300;
   }
   .texts > .text::before {
-    ${mqMin(breakpoints.sm)} {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 0;
+    z-index: 1;
     display: block;
     width: 100%;
     padding-top: 75.5%;
     background: url(${serviceOdd}) top left/ cover no-repeat;
-    }
   }
   &:nth-child(even) > .texts > .text::before {
     padding-top: 62.75%;
@@ -136,6 +132,7 @@ const ServiceSection = styled.section`
     order: 0;
   }
 `;
+
 const Rect = styled.div`
   content: '';
   position: absolute;
@@ -173,13 +170,11 @@ const Rect = styled.div`
   }
 `;
 const ServicePrevButton = styled.button`
+  padding-bottom: 120px;
   color: #fff;
   line-height: 1.5;
   ${font.pixel10}
   text-align: left;
-  ${mqMin(breakpoints.sm)} {
-    padding-bottom: 120px;
-  }
 `;
 
 export const ServicePage = () => {
@@ -243,17 +238,35 @@ export const ServicePage = () => {
           })}
         </ul>
       </ServiceMenu>
+      {/* <TestServiceSection>
+        <h3>タイトル</h3>
+        <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト<br />テストテストテストテストテス</p>
+        <img src="" alt="" />
+      </TestServiceSection>
+      <TestServiceSection>
+        <h3>タイトル</h3>
+        <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト<br />テストテストテストテストテス</p>
+        <img src="" alt="" />
+      </TestServiceSection>
+      <TestServiceSection>
+        <h3>タイトル</h3>
+        <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト<br />テストテストテストテストテス</p>
+        <img src="" alt="" />
+      </TestServiceSection>
+      <TestServiceSection>
+        <h3>タイトル</h3>
+        <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト<br />テストテストテストテストテス</p>
+        <img src="" alt="" />
+      </TestServiceSection> */}
       {serviceData.map((value, key) => {
         return (
           <ServiceSection id={value.label} key={key}>
-            <div className="texts">
-              <h3>{value.titleEn}</h3>
-              <div className="text">
-                <p>{value.text}</p>
-              </div>
-              <Rect id={'rect-head' + (key)} className={'rect -head' + (key % 2 == 0 ? ' -blue' : ' -red')} />
-              <Rect id={'rect-foot' + (key)} className={'rect -foot' + (key % 2 == 0 ? ' -blue' : ' -red')} />
-            </div>
+            <h3>{value.titleEn}
+              {/* <Rect id={'rect-head' + (key)} className={'rect -head' + (key % 2 == 0 ? ' -blue' : ' -red')} /> */}
+            </h3>
+            <p>{value.text}
+              {/* <Rect id={'rect-foot' + (key)} className={'rect -foot' + (key % 2 == 0 ? ' -blue' : ' -red')} /> */}
+            </p>
             <img src={value.image} alt={value.alt} />
           </ServiceSection>
         )

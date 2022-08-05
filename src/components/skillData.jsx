@@ -1,5 +1,37 @@
 export const skillData = [
-  { term: '言語', desc: 'HTML5 / CSS3 / Sass / JavaScript / PHP' },
-  { term: 'FW・ライブラリ', desc: 'WordPress / jQuery / React'},
-  { term: 'ソフトウェア', desc: 'Adobe Illustrator / Adobe Photoshop / Adobe XD / Figma / Affinity Designer / Affinity Photo / Affinity Publisher', last: <span className="arrow">▼</span>}
+  {
+    id: 'lang',
+    title: '言語',
+    level: {
+      'HTML5': 100,
+      'CSS3': 85,
+      'Sass': 90,
+      'Java Script': 45,
+      'PHP': 25,
+      'Git': 20
+    }
+  },
+  {
+    id: 'fw',
+    title: 'FW・ライブラリ',
+    level: {
+      'Word Press': 90,
+      'jQuery': 75,
+      'React': 30
+    }
+  },
+  {
+    id: 'soft',
+    title: 'ソフトウェア・サービス',
+    level: {
+      'Adobe Illustrator': 55,
+      'Adobe Photoshop': 25,
+      'Adobe XD': 95,
+      'Affinity Designer': 60,
+      'Affinity Photo': 60,
+      'Affinity Publisher': 40,
+      'Figma': 90,
+      'AWS': 10,
+    }
+  }
 ];

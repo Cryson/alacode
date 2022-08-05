@@ -4,7 +4,7 @@ import { breakpoints, mqMin } from '../style/mq';
 import { vwRange } from '../style/vw';
 import { font } from '../style/font';
 
-export const ColorTitle = styled.h2`
+export const PageTitle = styled.h2`
   display: inline-block;
   position: absolute;
   top: 0;
@@ -12,7 +12,6 @@ export const ColorTitle = styled.h2`
   z-index: 3;
   width: 100%;
   padding: 1em 2vw;
-  border: 4px solid #fff;
   border-radius: 20px;
   ${font.pixel10}
   ${vwRange('font-size', 20, 36, breakpoints.xs, breakpoints.md)}
@@ -23,6 +22,17 @@ export const ColorTitle = styled.h2`
     padding: 1em 1.2em;
     border-radius: 40px;
     font-size: 2em;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+    border: 4px solid #fff;
   }
   > img {
     margin-right: 0.5em;

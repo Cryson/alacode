@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef, createRef } from 'react';
 import styled from 'styled-components';
-import gsap from 'gsap';
 import { color } from '../style/color';
 import { font } from '../style/font';
 import { breakpoints, mqMax, mqMin } from '../style/mq';
 import { Body } from './Body';
-import { ColorTitle } from './ColorTitle';
+import { PageTitle } from './PageTitle';
 import { ColorContainer } from './ColorContainer';
 import { fruitsData } from './fruitsData';
 import { itemsData } from './itemsData';
@@ -126,12 +125,15 @@ const Tags = styled.ul`
   }
 `;
 const Text = styled.p`
-  margin-top: 80px;
   font-weight: 300;
+  ${mqMin(breakpoints.sm)} {
+    padding-bottom: 120px;
+  }
 `;
 
-export const ItemsPage = () => {
-  const colorTitle = useRef();
+export const ItemsPage = ({ complete }) => {
+  const label = 'items';
+  const pageTitle = useRef();
   const prevRef = useRef();
   const nextRef = useRef();
 
@@ -142,31 +144,33 @@ export const ItemsPage = () => {
     //   setActiveIndex(0);
     // }, 1);
 
-    const tl = gsap.timeline({delay: 0.5});
-    tl.from('#items-container', {
-      opacity: 0,
-      rotate: 0,
-    }).from('#items-container', {
-      duration: 0.07,
-      rotation: 15,
-      repeat: 6,
-      yoyo: true,
-    }).from('.light', {
-      opacity: 0.4,
-      display: 'block'
-    }).fromTo('#items-container', {
-      width: 20,
-      height: 20,
-    }, {
-      width: '100%',
-      height: '100%',
-      margin: 0,
-      delay: -0.2,
-      ease: "back.in(1)",
-    }).from([colorTitle.current, '.curtain', '.swiper'], {
-      delay: 0.1,
-      opacity: 0,
-    });
+    // console.log(complete);
+
+    // const tl = gsap.timeline();
+    // tl.from('#items-container', {
+    //   opacity: 0,
+    //   rotate: 0,
+    // }).from('#items-container', {
+    //   duration: 0.07,
+    //   rotation: 15,
+    //   repeat: 6,
+    //   yoyo: true,
+    // }).from('.light', {
+    //   opacity: 0.4,
+    //   display: 'block'
+    // }).fromTo('#items-container', {
+    //   width: 20,
+    //   height: 20,
+    // }, {
+    //   width: '100%',
+    //   height: '100%',
+    //   margin: 0,
+    //   delay: -0.2,
+    //   ease: "back.in(1)",
+    // }).from([pageTitle.current, '.curtain', '.swiper'], {
+    //   delay: 0.1,
+    //   opacity: 0,
+    // });
 
     // const mql = window.matchMedia(`(min-width: ${breakpoints.sm}px)`);
 
@@ -187,8 +191,8 @@ export const ItemsPage = () => {
   }, []);
 
   return (
-    <Body>
-      <ColorTitle ref={colorTitle}>{fruitsData[3].image}制作アイテムリスト</ColorTitle>
+    <Body label={label}>
+      <PageTitle ref={pageTitle}>{fruitsData[3].image}制作アイテムリスト</PageTitle>
       <ColorContainer page="items" color={color.yellowGamboge} curtain>
         <Overflow>
           <Swiper

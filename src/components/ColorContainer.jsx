@@ -5,6 +5,9 @@ import { vwRange } from '../style/vw';
 
 const Wrapper = styled.div`
   width: 100%;
+  ${mqMin(breakpoints.sm)} {
+    margin-bottom: 120px;
+  }
   ${(props) => props.page === 'items' ? css`
     height: 480px;
     ${mqMin(breakpoints.sm)} {
@@ -14,9 +17,9 @@ const Wrapper = styled.div`
       height: 680px;
     }
     ` : props.page === 'contact' ? css`
-    height: 1020px;
+    /* height: 1020px; */
     ${mqMin(breakpoints.md)} {
-      height: 1050px;
+      /* height: 1050px; */
     };
   ` : ''
   }
@@ -25,9 +28,8 @@ const Wrapper = styled.div`
     z-index: 1;
     width: 100%;
     height: 100%;
-    margin: 310px auto 0;
-    background: ${props => props.color};
-    ${(props) => props.page === 'contact' ? css`
+    background: ${({ color }) => color};
+    ${({ page }) => page === 'contact' ? css`
       display: flex;
       align-items: center;
       flex-wrap: wrap;
@@ -44,7 +46,7 @@ const Light = styled.div`
   z-index: 1;
   width: 200%;
   height: 200%;
-  background: ${props => props.color};
+  background: ${({ color }) => color};
   opacity: 0;
   transition: 0.3s opacity ease-in-out;
   mix-blend-mode: screen;
