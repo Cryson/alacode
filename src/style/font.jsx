@@ -5,12 +5,6 @@ import p10400ttf from '../fonts/PixelMplus10-Regular.ttf';
 import p10700woff2 from '../fonts/PixelMplus10-Bold.woff2';
 import p10700woff from '../fonts/PixelMplus10-Bold.woff';
 import p10700ttf from '../fonts/PixelMplus10-Bold.ttf';
-// import p12400woff2 from '../fonts/PixelMplus12-Regular.woff2';
-// import p12400woff from '../fonts/PixelMplus12-Regular.woff';
-// import p12400ttf from '../fonts/PixelMplus12-Regular.ttf';
-// import p12700woff2 from '../fonts/PixelMplus12-Bold.woff2';
-// import p12700woff from '../fonts/PixelMplus12-Bold.woff';
-// import p12700ttf from '../fonts/PixelMplus12-Bold.ttf';
 import ant300woff2 from '../fonts/ZenKakuGothicAntique-Light.woff2';
 import ant300woff from '../fonts/ZenKakuGothicAntique-Light.woff';
 import ant300ttf from '../fonts/ZenKakuGothicAntique-Light.ttf';
@@ -46,24 +40,6 @@ export const fontFace = css`
       url(${p10700woff}) format('woff'),
       url(${p10700ttf}) format('ttf');
   }
-  /* @font-face {
-    font-family: 'PixelMplus12';
-    font-style: normal;
-    font-weight: 400; 
-    src: local(),
-      url('${p12400woff2}') format('woff2'),
-      url('${p12400woff}') format('woff'),
-      url('${p12400ttf}') format('ttf');
-  }
-  @font-face {
-    font-family: 'PixelMplus12';
-    font-style: normal;
-    font-weight: 700;
-    src: local(),
-      url('${p12700woff2}') format('woff2'),
-      url('${p12700woff}') format('woff'),
-      url('${p12700ttf}') format('ttf');
-  } */
   @font-face {
     font-family: 'Zen Kaku Gothic Antique';
     font-style: normal;
@@ -114,5 +90,4 @@ export const fontFace = css`
 export const font = {
   antique: `font-family: 'Zen Kaku Gothic Antique', 'Yu Gothic Medium', '游ゴシック Medium', 'YuGothic', '游ゴシック体', 'メイリオ', 'Meiryo', sans-serif;`,
   pixel10: `font-family: 'PixelMplus10', 'Yu Gothic Medium', '游ゴシック Medium', 'YuGothic', '游ゴシック体', 'メイリオ', 'Meiryo', sans-serif;`,
-  // pixel12: `font-family: 'PixelMplus12', 'Yu Gothic Medium', '游ゴシック Medium', 'YuGothic', '游ゴシック体', 'メイリオ', 'Meiryo', sans-serif;`,
 };
