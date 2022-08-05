@@ -87,7 +87,7 @@
 //   }
 // `;
 
-// export const font = {
-//   antique: `font-family: 'Zen Kaku Gothic Antique', 'Yu Gothic Medium', '游ゴシック Medium', 'YuGothic', '游ゴシック体', 'メイリオ', 'Meiryo', sans-serif;`,
-//   pixel10: `font-family: 'PixelMplus10', 'Yu Gothic Medium', '游ゴシック Medium', 'YuGothic', '游ゴシック体', 'メイリオ', 'Meiryo', sans-serif;`,
-// };
+export const font = {
+  antique: `font-family: 'Zen Kaku Gothic Antique', 'Yu Gothic Medium', '游ゴシック Medium', 'YuGothic', '游ゴシック体', 'メイリオ', 'Meiryo', sans-serif;`,
+  pixel10: `font-family: 'PixelMplus10', 'Yu Gothic Medium', '游ゴシック Medium', 'YuGothic', '游ゴシック体', 'メイリオ', 'Meiryo', sans-serif;`,
+};
