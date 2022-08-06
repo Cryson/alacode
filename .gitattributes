@@ -37,6 +37,6 @@
 *.otf binary
 *.eot binary
 *.svg binary
-# *.ttf binary
-# *.woff binary
-# *.woff2 binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
