@@ -49,10 +49,8 @@ const Overflow = styled.div`
   }
   p {
     display: none;
-    content: '';
   }
   img {
-    content: '';
     display: block;
     width: 100%;
     height: 100%;
