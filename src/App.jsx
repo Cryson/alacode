@@ -55,11 +55,9 @@ export const App = () => {
     }, 800);
 
     document.addEventListener('mousemove', (e) => {
-      const mouseX = e.clientX;
-      const mouseY = e.clientY;
       gsap.to(mouseDots.current, {
-        x: mouseX,
-        y: mouseY,
+        x: e.clientX,
+        y: e.clientY,
         duration: 0.35
       });
     });
