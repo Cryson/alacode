@@ -27,7 +27,6 @@ export const fontFace = css`
     font-style: normal;
     font-weight: 400;
     src:
-      local(),
       url(${p10400woff2}) format('woff2'),
       url(${p10400woff}) format('woff'),
       url(${p10400ttf}) format('ttf');
@@ -37,7 +36,6 @@ export const fontFace = css`
     font-style: normal;
     font-weight: 700;
     src:
-      local(),
       url(${p10700woff2}) format('woff2'),
       url(${p10700woff}) format('woff'),
       url(${p10700ttf}) format('ttf');
@@ -47,7 +45,6 @@ export const fontFace = css`
     font-style: normal;
     font-weight: 300;
     src:
-      local(),
       url(${ant300woff2}) format('woff2'),
       url(${ant300woff}) format('woff'),
       url(${ant300ttf}) format('ttf');
@@ -57,7 +54,6 @@ export const fontFace = css`
     font-style: normal;
     font-weight: 400;
     src:
-      local(),
       url(${ant400woff2}) format('woff2'),
       url(${ant400woff}) format('woff'),
       url(${ant400ttf}) format('ttf');
@@ -67,7 +63,6 @@ export const fontFace = css`
     font-style: normal;
     font-weight: 500;
     src:
-      local(),
       url(${ant500woff2}) format('woff2'),
       url(${ant500woff}) format('woff'),
       url(${ant500ttf}) format('ttf');
@@ -77,7 +72,6 @@ export const fontFace = css`
     font-style: normal;
     font-weight: 700;
     src:
-      local(),
       url(${ant700woff2}) format('woff2'),
       url(${ant700woff}) format('woff'),
       url(${ant700ttf}) format('ttf');
@@ -87,7 +81,6 @@ export const fontFace = css`
     font-style: normal;
     font-weight: 900;
     src:
-      local(),
       url(${ant900woff2}) format('woff2'),
       url(${ant900woff}) format('woff'),
       url(${ant900ttf}) format('ttf');
