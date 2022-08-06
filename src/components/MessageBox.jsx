@@ -25,6 +25,9 @@ const Wrapper = styled.aside`
   ${mqMax(breakpoints.sm)} {
     display: none;
   }
+  @media screen and (max-height: 600px) {
+    display: none;
+  }
   ${mqMin(breakpoints.md)} {
     bottom: 20px;
   }
