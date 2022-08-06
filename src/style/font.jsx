@@ -27,7 +27,6 @@ export const fontFace = css`
     font-style: normal;
     font-weight: 400;
     src:
-      url(${p10400woff2}) format('woff2'),
       url(${p10400woff}) format('woff'),
       url(${p10400ttf}) format('ttf');
   }
@@ -36,7 +35,6 @@ export const fontFace = css`
     font-style: normal;
     font-weight: 700;
     src:
-      url(${p10700woff2}) format('woff2'),
       url(${p10700woff}) format('woff'),
       url(${p10700ttf}) format('ttf');
   }
@@ -45,7 +43,6 @@ export const fontFace = css`
     font-style: normal;
     font-weight: 300;
     src:
-      url(${ant300woff2}) format('woff2'),
       url(${ant300woff}) format('woff'),
       url(${ant300ttf}) format('ttf');
   }
