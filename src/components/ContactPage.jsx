@@ -119,7 +119,7 @@ export const ContactPage = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
-    emailjs.sendForm('service_06u5i6p', 'template_h7hor1g', form.current, 's1V0Ijg_1vVJP1hde')
+    emailjs.sendForm(`${process.env.REACT_APP_SERVICE_ID}`, `${process.env.REACT_APP_TEMPLATE_ID}`, form.current, `${process.env.REACT_APP_PUBLIC_KEY}`)
       .then((result) => {
         console.log(result.text);
       }, (error) => {
