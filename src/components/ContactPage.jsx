@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, createRef } from 'react';
 import styled from 'styled-components';
 import gsap from 'gsap';
+import emailjs from '@emailjs/browser';
 import { init, send } from 'emailjs-com';
 import { color } from '../style/color';
 import { font } from '../style/font';
@@ -112,9 +113,19 @@ export const ContactPage = () => {
   const [message, setMessage] = useState('');
   const pageTitle = useRef();
   const colorHeader = useRef();
-  const colorForm = useRef();
+  const form = useRef();
   const privacyRef = useRef();
   const privacyTitleRef = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs.sendForm('service_06u5i6p', 'template_h7hor1g', form.current, 's1V0Ijg_1vVJP1hde')
+      .then((result) => {
+        console.log(result.text);
+      }, (error) => {
+        console.log(error.text);
+      });
+  };
 
   useEffect(() => {
 
@@ -195,21 +206,21 @@ export const ContactPage = () => {
             )
           })}
         </PrivacyPolicy>
-        <Form ref={colorForm}>
+        <Form ref={form} onSubmit={sendEmail}>
           <p>This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</p>
           <div className="row">
             <label className="label" htmlFor="formName">おなまえ</label>
-            <input className="name" type="text" id="formName" value={name} onChange={(e) => setName(e.target.value)} />
+            <input id="formName" className="name" name="user_name" type="text" value={name} onChange={(e) => setName(e.target.value)} />
           </div>
           <div className="row">
             <label className="label" htmlFor="formEmail">メールアドレス</label>
-            <input className="email" type="email" id="formEmail" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input id="formEmail" className="email" name="user_email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
           <div className="row">
             <label className="label -message" htmlFor="formMessage">ほんぶん</label>
-            <textarea className="message" type="textarea" id="formMessage" value={message} onChange={(e) => setMessage(e.target.value)} />
+            <textarea id="formMessage" className="message" name="message" type="textarea" value={message} onChange={(e) => setMessage(e.target.value)} />
           </div>
-          <button className="send">[ けってい ]</button>
+          <button className="send" type="submit" value="Send">[ けってい ]</button>
         </Form>
       </ColorContainer>
     </Body>
