@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, createRef } from 'react';
 import styled from 'styled-components';
 import gsap from 'gsap';
 import emailjs from '@emailjs/browser';
-import { init, send } from 'emailjs-com';
+import {ReCAPTCHA} from 'react-google-recaptcha';
 import { color } from '../style/color';
 import { font } from '../style/font';
 import { breakpoints, mqMax, mqMin } from '../style/mq';
@@ -108,28 +108,14 @@ const PrivacyPolicy = styled.div`
 export const ContactPage = () => {
   const label = 'contact';
   const [openPrivacy, setOpenPrivacy] = useState(false);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  // const [name, setName] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [message, setMessage] = useState('');
   const pageTitle = useRef();
   const colorHeader = useRef();
   const form = useRef();
   const captchaRef = useRef();
   const privacyRef = useRef();
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-    const token = captchaRef.current.getValue();
-    emailjs.sendForm(`${process.env.REACT_APP_SERVICE_ID}`, `${process.env.REACT_APP_TEMPLATE_ID}`, form.current, `${process.env.REACT_APP_PUBLIC_KEY}`)
-      .then((result) => {
-        window.alert('お問い合わせを受け付けました。ありがとうございました。');
-        setName('');
-        setEmail('');
-        setMessage('');
-      }, (error) => {
-        window.alert('お問い合わせ送信に失敗しました。申し訳ありませんが、後ほどまたお試しください。');
-      });
-  };
 
   useEffect(() => {
     console.log(form.current);
@@ -192,6 +178,33 @@ export const ContactPage = () => {
     });
   }, [openPrivacy]);
 
+  const [toSend, setToSend,] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    const token = captchaRef.current.getValue();
+    const params = {
+      ...toSend,
+      'g-recaptcha-response': token,
+    };
+    emailjs.sendForm(`${process.env.REACT_APP_SERVICE_ID}`, `${process.env.REACT_APP_TEMPLATE_ID}`, params, `${process.env.REACT_APP_PUBLIC_KEY}`, 'g-recaptcha-response')
+      .then((result) => {
+        window.alert('お問い合わせを受け付けました。ありがとうございました。');
+        setToSend('');
+      }, (error) => {
+        window.alert('お問い合わせ送信に失敗しました。申し訳ありませんが、後ほどまたお試しください。');
+      });
+  };
+
+  const handleChange = (e) => {
+    setToSend({ ...toSend, [e.target.name]: e.target.value });
+    console.log(toSend);
+  };
+
   return (
     <Body label={label}>
       <PageTitle ref={pageTitle}>{fruitsData[4].image}お問い合わせフォーム</PageTitle>
@@ -215,17 +228,17 @@ export const ContactPage = () => {
           <p>This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</p>
           <div className="row">
             <label className="label" htmlFor="formName">おなまえ</label>
-            <input id="formName" className="name" name="user_name" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+            <input id="formName" className="name" name="name" type="text" value={toSend.name} onChange={handleChange} />
           </div>
           <div className="row">
             <label className="label" htmlFor="formEmail">メールアドレス</label>
-            <input id="formEmail" className="email" name="user_email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input id="formEmail" className="email" name="email" type="email" value={toSend.email} onChange={handleChange} />
           </div>
           <div className="row">
             <label className="label -message" htmlFor="formMessage">ほんぶん</label>
-            <textarea id="formMessage" className="message" name="message" type="textarea" value={message} onChange={(e) => setMessage(e.target.value)} />
+            <textarea id="formMessage" className="message" name="message" type="textarea" value={toSend.message} onChange={handleChange} />
           </div>
-          <div className="g-recaptcha" data-sitekey={process.env.REACT_APP_SITE_KEY} ref={captchaRef}></div>
+          <ReCAPTCHA sitekey="6LevWFUhAAAAANWIqcSH7JlCsPZKkptIuI1ecENW" ref={captchaRef} />
           <button className="send" type="submit" value="Send">[ けってい ]</button>
         </Form>
       </ColorContainer>
