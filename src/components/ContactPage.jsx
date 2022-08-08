@@ -5,7 +5,6 @@ import emailjs from '@emailjs/browser';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { color } from '../style/color';
 import { font } from '../style/font';
-import { breakpoints, mqMax, mqMin } from '../style/mq';
 import { Body } from './Body';
 import { PageTitle } from './PageTitle';
 import { ColorContainer } from './ColorContainer';
@@ -118,20 +117,13 @@ const PrivacyPolicy = styled.div`
 export const ContactPage = () => {
   const label = 'contact';
   const [openPrivacy, setOpenPrivacy] = useState(false);
-  // const [name, setName] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [message, setMessage] = useState('');
   const pageTitle = useRef();
   const colorHeader = useRef();
   const form = useRef();
   const recaptchaRef = useRef(null);
   const privacyRef = useRef();
 
-  console.log(process.env.REACT_APP_TEST);
-
   useEffect(() => {
-    // console.log(form.current);
-
     // const tl = gsap.timeline({delay: 0.5});
     // tl.from('#contact-container', {
     //   opacity: 0,
@@ -219,21 +211,6 @@ export const ContactPage = () => {
         (err) => {
           window.alert('お問い合わせ送信に失敗しました。申し訳ありませんが、後ほどまたお試しください。');
         })
-
-    // e.preventDefault();
-    // const token = recaptchaRef.current.getValue();
-    // const params = {
-    //   ...toSend,
-    //   'g-recaptcha-response': token,
-    // };
-    // console.log(params);
-    // emailjs.send(`${process.env.REACT_APP_SERVICE_ID}`, `${process.env.REACT_APP_TEMPLATE_ID}`, params, `${process.env.REACT_APP_PUBLIC_KEY}`, 'g-recaptcha-response')
-    //   .then((result) => {
-    //     window.alert('お問い合わせを受け付けました。ありがとうございました。');
-    //     setToSend('');
-    //   }, (error) => {
-    //     window.alert('お問い合わせ送信に失敗しました。申し訳ありませんが、後ほどまたお試しください。');
-    //   });
   };
 
   const handleChange = (e) => {
