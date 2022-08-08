@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, createRef } from 'react';
 import styled from 'styled-components';
 import gsap from 'gsap';
 import emailjs from '@emailjs/browser';
-import {ReCAPTCHA} from 'react-google-recaptcha';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { color } from '../style/color';
 import { font } from '../style/font';
 import { breakpoints, mqMax, mqMin } from '../style/mq';
@@ -52,6 +52,14 @@ const Form = styled.form`
     margin: 0 auto;
     border-bottom: 2px solid #fff;
   }
+  .row.-recaptcha {
+    padding: 40px 0 10px;
+    border-bottom: none;
+    overflow: hidden;
+  }
+  .row.-recaptcha > div {
+    margin: 0 auto;
+  }
   .label, .send {
     display: block;
     ${font.pixel10}
@@ -78,10 +86,12 @@ const Form = styled.form`
     color: #fff;
     font-size: 1.5em;
   }
+  .send.-hide {
+    color: ${color.grayDim};
+  }
 `;
 
 const PrivacyPolicy = styled.div`
-  /* content: ''; */
   width: 100%;
   padding: 80px 0 120px;
   color: ${color.black};
@@ -114,7 +124,7 @@ export const ContactPage = () => {
   const pageTitle = useRef();
   const colorHeader = useRef();
   const form = useRef();
-  const captchaRef = useRef();
+  const recaptchaRef = useRef(null);
   const privacyRef = useRef();
 
   useEffect(() => {
@@ -178,6 +188,7 @@ export const ContactPage = () => {
     });
   }, [openPrivacy]);
 
+  const [recaptchaStatus, setRecaptchaStatus] = useState(false);
   const [toSend, setToSend,] = useState({
     name: '',
     email: '',
@@ -185,25 +196,51 @@ export const ContactPage = () => {
   });
 
   const sendEmail = (e) => {
+
     e.preventDefault();
-    const token = captchaRef.current.getValue();
+
+    const token = recaptchaRef.current.getValue(); // <- `getValue()` from the instantiated refCaptcha
     const params = {
       ...toSend,
       'g-recaptcha-response': token,
-    };
+    }; // <- Create this object spreading your state and adding the retrieved token as a value of 'g-recaptcha-response'
+
     emailjs.send(`${process.env.REACT_APP_SERVICE_ID}`, `${process.env.REACT_APP_TEMPLATE_ID}`, params, `${process.env.REACT_APP_PUBLIC_KEY}`, 'g-recaptcha-response')
-      .then((result) => {
+      .then((response) => {
         window.alert('お問い合わせを受け付けました。ありがとうございました。');
-        setToSend('');
-      }, (error) => {
-        window.alert('お問い合わせ送信に失敗しました。申し訳ありませんが、後ほどまたお試しください。');
-      });
+        setToSend({
+          name: '',
+          email: '',
+          message: '',
+        });
+      },
+        (err) => {
+          window.alert('お問い合わせ送信に失敗しました。申し訳ありませんが、後ほどまたお試しください。');
+        })
+
+    // e.preventDefault();
+    // const token = recaptchaRef.current.getValue();
+    // const params = {
+    //   ...toSend,
+    //   'g-recaptcha-response': token,
+    // };
+    // console.log(params);
+    // emailjs.send(`${process.env.REACT_APP_SERVICE_ID}`, `${process.env.REACT_APP_TEMPLATE_ID}`, params, `${process.env.REACT_APP_PUBLIC_KEY}`, 'g-recaptcha-response')
+    //   .then((result) => {
+    //     window.alert('お問い合わせを受け付けました。ありがとうございました。');
+    //     setToSend('');
+    //   }, (error) => {
+    //     window.alert('お問い合わせ送信に失敗しました。申し訳ありませんが、後ほどまたお試しください。');
+    //   });
   };
 
   const handleChange = (e) => {
     setToSend({ ...toSend, [e.target.name]: e.target.value });
-    console.log(toSend);
   };
+
+  const recaptchaSuccess = () => {
+    setRecaptchaStatus(true);
+  }
 
   return (
     <Body label={label}>
@@ -228,18 +265,18 @@ export const ContactPage = () => {
           <p>This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</p>
           <div className="row">
             <label className="label" htmlFor="formName">おなまえ</label>
-            <input id="formName" className="name" name="name" type="text" value={toSend.name} onChange={handleChange} />
+            <input id="formName" className="name" name="name" type="text" value={toSend.name} onChange={handleChange} required />
           </div>
           <div className="row">
             <label className="label" htmlFor="formEmail">メールアドレス</label>
-            <input id="formEmail" className="email" name="email" type="email" value={toSend.email} onChange={handleChange} />
+            <input id="formEmail" className="email" name="email" type="email" value={toSend.email} onChange={handleChange} required />
           </div>
           <div className="row">
             <label className="label -message" htmlFor="formMessage">ほんぶん</label>
-            <textarea id="formMessage" className="message" name="message" type="textarea" value={toSend.message} onChange={handleChange} />
+            <textarea id="formMessage" className="message" name="message" type="textarea" value={toSend.message} onChange={handleChange} required />
           </div>
-          <ReCAPTCHA sitekey="6Lcu5VchAAAAAGA1YSJVoiUqBOcmyfM4nTtUg_zC" ref={captchaRef} />
-          <button className="send" type="submit" value="Send">[ けってい ]</button>
+          <ReCAPTCHA className="row -recaptcha" sitekey="6Lcu5VchAAAAAGA1YSJVoiUqBOcmyfM4nTtUg_zC" ref={recaptchaRef} onChange={recaptchaSuccess} />
+          <button className={recaptchaStatus ? 'send' : 'send -hide'} type="submit" value="Send" disabled={!recaptchaStatus}>[ けってい ]</button>
         </Form>
       </ColorContainer>
     </Body>
