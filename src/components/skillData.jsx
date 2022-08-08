@@ -8,7 +8,7 @@ export const skillData = [
       'Sass': 90,
       'Java Script': 45,
       'PHP': 25,
-      'Git': 20
+      'Git': 15
     }
   },
   {
@@ -17,7 +17,8 @@ export const skillData = [
     level: {
       'Word Press': 90,
       'jQuery': 75,
-      'React': 30
+      'React': 30,
+      'TypeScript': 3,
     }
   },
   {
@@ -31,7 +32,7 @@ export const skillData = [
       'Affinity Photo': 60,
       'Affinity Publisher': 40,
       'Figma': 90,
-      'AWS': 10,
+      'AWS': 5,
     }
   }
 ];
