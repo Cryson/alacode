@@ -12,6 +12,7 @@ import { SkillPage } from './components/SkillPage.jsx';
 import { ServicePage } from './components/ServicePage.jsx';
 import { ItemsPage } from './components/ItemsPage.jsx';
 import { ContactPage } from './components/ContactPage.jsx';
+import { ErrorPage } from './components/ErrorPage.jsx';
 import { LoadingCube } from './components/LoadingCube';
 import { ScrollToTop } from './components/ScrollToTop';
 
@@ -78,6 +79,7 @@ export const App = () => {
             <Route path="/service" element={<ServicePage />} />
             <Route path="/items" element={<ItemsPage complete={complete} />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
           <Sidebar />
           <Footer />
