@@ -126,6 +126,8 @@ export const ContactPage = () => {
   const form = useRef();
   const recaptchaRef = useRef(null);
   const privacyRef = useRef();
+  const sitekey = process.env.REACT_APP_SITE_KEY;
+  console.log(sitekey);
 
   useEffect(() => {
     // console.log(form.current);
@@ -275,7 +277,7 @@ export const ContactPage = () => {
             <label className="label -message" htmlFor="formMessage">ほんぶん</label>
             <textarea id="formMessage" className="message" name="message" type="textarea" value={toSend.message} onChange={handleChange} required />
           </div>
-          <ReCAPTCHA className="row -recaptcha" sitekey="6Lcu5VchAAAAAGA1YSJVoiUqBOcmyfM4nTtUg_zC" ref={recaptchaRef} onChange={recaptchaSuccess} />
+          <ReCAPTCHA className="row -recaptcha" sitekey={sitekey} ref={recaptchaRef} onChange={recaptchaSuccess} />
           <button className={recaptchaStatus ? 'send' : 'send -hide'} type="submit" value="Send" disabled={!recaptchaStatus}>[ けってい ]</button>
         </Form>
       </ColorContainer>
