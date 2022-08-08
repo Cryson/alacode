@@ -118,7 +118,7 @@ export const ContactPage = () => {
   const privacyRef = useRef();
 
   useEffect(() => {
-    console.log(form.current);
+    // console.log(form.current);
 
     // const tl = gsap.timeline({delay: 0.5});
     // tl.from('#contact-container', {
@@ -191,7 +191,7 @@ export const ContactPage = () => {
       ...toSend,
       'g-recaptcha-response': token,
     };
-    emailjs.sendForm(`${process.env.REACT_APP_SERVICE_ID}`, `${process.env.REACT_APP_TEMPLATE_ID}`, params, `${process.env.REACT_APP_PUBLIC_KEY}`, 'g-recaptcha-response')
+    emailjs.send(`${process.env.REACT_APP_SERVICE_ID}`, `${process.env.REACT_APP_TEMPLATE_ID}`, params, `${process.env.REACT_APP_PUBLIC_KEY}`, 'g-recaptcha-response')
       .then((result) => {
         window.alert('お問い合わせを受け付けました。ありがとうございました。');
         setToSend('');
@@ -238,7 +238,7 @@ export const ContactPage = () => {
             <label className="label -message" htmlFor="formMessage">ほんぶん</label>
             <textarea id="formMessage" className="message" name="message" type="textarea" value={toSend.message} onChange={handleChange} />
           </div>
-          <ReCAPTCHA sitekey="6LevWFUhAAAAANWIqcSH7JlCsPZKkptIuI1ecENW" ref={captchaRef} />
+          <ReCAPTCHA sitekey="6Lcu5VchAAAAAGA1YSJVoiUqBOcmyfM4nTtUg_zC" ref={captchaRef} />
           <button className="send" type="submit" value="Send">[ けってい ]</button>
         </Form>
       </ColorContainer>
