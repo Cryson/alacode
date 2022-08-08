@@ -7,7 +7,8 @@ export const skillData = [
       'CSS3': 85,
       'Sass': 90,
       'Java Script': 45,
-      'PHP': 25,
+      'TypeScript': 3,
+      'PHP': 20,
       'Git': 15
     }
   },
@@ -18,7 +19,6 @@ export const skillData = [
       'Word Press': 90,
       'jQuery': 75,
       'React': 30,
-      'TypeScript': 3,
     }
   },
   {
