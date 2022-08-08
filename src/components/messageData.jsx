@@ -42,7 +42,7 @@ export const messageData = {
   error: {
     label: 'error',
     message: [
-      '「申し訳ありませんが、こちらのページは存在しておりません(404)。」',
+      '「申し訳ありませんが、こちらのページは存在しません。」',
     ]
   },
 }

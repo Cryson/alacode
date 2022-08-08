@@ -10,6 +10,7 @@ const Wrapper = styled.main`
   align-items: center;
   flex: 1 1 100%;
   position: relative;
+  min-height: 480px;
 
   ${({transparent}) => transparent ? css`
     /* padding: 120px 4vw 40px; */
