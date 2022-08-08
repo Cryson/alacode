@@ -127,6 +127,8 @@ export const ContactPage = () => {
   const recaptchaRef = useRef(null);
   const privacyRef = useRef();
 
+  console.log(process.env.REACT_APP_SITE_KEY);
+
   useEffect(() => {
     // console.log(form.current);
 
