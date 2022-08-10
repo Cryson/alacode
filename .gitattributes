@@ -40,3 +40,4 @@
 *.ttf binary
 *.woff binary
 *.woff2 binary
+tsconfig.json
