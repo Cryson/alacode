@@ -5,7 +5,7 @@ import { breakpoints, mqMin } from './style/mq';
 import { color } from './style/color';
 import { fontFace, font } from './style/font';
 import { reset } from './style/reset';
-import { App } from './App';
+import { App } from './App.tsx';
 import backPc from './images/back-pc.svg';
 
 const GlobalStyle = createGlobalStyle`
