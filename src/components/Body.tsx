@@ -1,10 +1,16 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { LoadingContext } from './Context';
 import { MessageBox } from './MessageBox';
 import { breakpoints, mqMin } from '../style/mq';
 
-const Wrapper = styled.main`
+type Props = {
+  children: React.ReactNode,
+  label: string,
+  transparent?: boolean,
+};
+
+const Wrapper = styled.main<Props>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,16 +18,13 @@ const Wrapper = styled.main`
   position: relative;
   min-height: 480px;
 
-  ${({transparent}) => transparent ? css`
-    /* padding: 120px 4vw 40px; */
+  ${({ transparent }) => transparent ? css`
     border-radius: 40px;
     color: #fff;
     ${mqMin(breakpoints.sm)} {
-      /* padding: 120px 40px 40px; */
     }
     ${mqMin(breakpoints.md)} {
       flex: 0 1 calc(100% - 320px);
-      /* padding: 120px 80px 80px; */
     }
   ` : css`
     background: inherit;
@@ -32,7 +35,7 @@ const Wrapper = styled.main`
   }
 
   &::before {
-    ${({transparent}) => transparent ? css`
+    ${({ transparent }) => transparent ? css`
     content: '';
     position: absolute;
     top: -4px;
@@ -49,7 +52,7 @@ const Wrapper = styled.main`
   }
   .section {
     width: 100%;
-    ${({transparent}) => transparent && css`
+    ${({ transparent }) => transparent && css`
     padding: 120px 4vw 80px;
     ${mqMin(breakpoints.sm)} {
       padding: 120px 40px 80px;
@@ -73,11 +76,11 @@ const Wrapper = styled.main`
   }
 `;
 
-export const Body = ({ children, label, transparent }) => {
+export const Body: React.FC<Props> = ({ children, label, transparent }) => {
   const loadingFinish = useContext(LoadingContext);
-  
+
   return (
-    <Wrapper transparent={transparent}>
+    <Wrapper label={label} transparent={transparent}>
       {children}
       {loadingFinish && <MessageBox label={label} />}
     </Wrapper>

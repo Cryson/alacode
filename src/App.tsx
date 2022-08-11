@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { breakpoints, mqMax } from './style/mq';
 import { Sidebar } from './components/Sidebar.jsx';
 import { Footer } from './components/Footer.jsx';
-import { TopPage } from './components/TopPage.jsx';
+import { TopPage } from './components/TopPage';
 import { ProfilePage } from './components/ProfilePage.jsx';
 import { SkillPage } from './components/SkillPage.jsx';
 import { ServicePage } from './components/ServicePage.jsx';
@@ -45,8 +45,8 @@ const MouseStalker = styled.div`
   }
 `;
 
-export const App = () => {
-  const mouseDots = useRef();
+export const App: React.FC = () => {
+  const mouseRef = useRef<SVGSVGElement>(null);
   const [complete, setComplete] = useState(false);
   const [hoge, setHoge] = useState(false);
 
@@ -56,7 +56,7 @@ export const App = () => {
     }, 800);
 
     document.addEventListener('mousemove', (e) => {
-      gsap.to(mouseDots.current, {
+      gsap.to(mouseRef.current, {
         x: e.clientX,
         y: e.clientY,
         duration: 0.35
@@ -68,7 +68,7 @@ export const App = () => {
     <Router>
       <ScrollToTop />
       <MouseStalker>
-        <svg id="mouse-stalker" ref={mouseDots} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80.5 80.5"><g id="grid"><path className="cls-1" d="M70.25 50.25h10v10h-10zM70.25 40.25h10v10h-10zM70.25 30.25h10v10h-10zM70.25 20.25h10v10h-10zM60.25 60.25h10v10h-10zM60.25 50.25h10v10h-10zM60.25 40.25h10v10h-10zM60.25 30.25h10v10h-10zM60.25 20.25h10v10h-10zM60.25 10.25h10v10h-10zM50.25 70.25h10v10h-10zM50.25 60.25h10v10h-10zM50.25 50.25h10v10h-10zM50.25 40.25h10v10h-10zM50.25 30.25h10v10h-10zM50.25 20.25h10v10h-10zM50.25 10.25h10v10h-10zM50.25.25h10v10h-10zM40.25 70.25h10v10h-10zM40.25 60.25h10v10h-10zM40.25 50.25h10v10h-10zM40.25 40.25h10v10h-10zM40.25 30.25h10v10h-10zM40.25 20.25h10v10h-10zM40.25 10.25h10v10h-10zM40.25.25h10v10h-10zM30.25 70.25h10v10h-10zM30.25 60.25h10v10h-10zM30.25 50.25h10v10h-10zM30.25 40.25h10v10h-10zM30.25 30.25h10v10h-10zM30.25 20.25h10v10h-10zM30.25 10.25h10v10h-10zM30.25.25h10v10h-10zM20.25 70.25h10v10h-10zM20.25 60.25h10v10h-10zM20.25 50.25h10v10h-10zM20.25 40.25h10v10h-10zM20.25 30.25h10v10h-10zM20.25 20.25h10v10h-10zM20.25 10.25h10v10h-10zM20.25.25h10v10h-10zM10.25 60.25h10v10h-10zM10.25 50.25h10v10h-10zM10.25 40.25h10v10h-10zM10.25 30.25h10v10h-10zM10.25 20.25h10v10h-10zM10.25 10.25h10v10h-10zM.25 50.25h10v10h-10zM.25 40.25h10v10h-10zM.25 30.25h10v10h-10zM.25 20.25h10v10h-10z" /></g></svg>
+        <svg id="mouse-stalker" ref={mouseRef} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80.5 80.5"><g id="grid"><path className="cls-1" d="M70.25 50.25h10v10h-10zM70.25 40.25h10v10h-10zM70.25 30.25h10v10h-10zM70.25 20.25h10v10h-10zM60.25 60.25h10v10h-10zM60.25 50.25h10v10h-10zM60.25 40.25h10v10h-10zM60.25 30.25h10v10h-10zM60.25 20.25h10v10h-10zM60.25 10.25h10v10h-10zM50.25 70.25h10v10h-10zM50.25 60.25h10v10h-10zM50.25 50.25h10v10h-10zM50.25 40.25h10v10h-10zM50.25 30.25h10v10h-10zM50.25 20.25h10v10h-10zM50.25 10.25h10v10h-10zM50.25.25h10v10h-10zM40.25 70.25h10v10h-10zM40.25 60.25h10v10h-10zM40.25 50.25h10v10h-10zM40.25 40.25h10v10h-10zM40.25 30.25h10v10h-10zM40.25 20.25h10v10h-10zM40.25 10.25h10v10h-10zM40.25.25h10v10h-10zM30.25 70.25h10v10h-10zM30.25 60.25h10v10h-10zM30.25 50.25h10v10h-10zM30.25 40.25h10v10h-10zM30.25 30.25h10v10h-10zM30.25 20.25h10v10h-10zM30.25 10.25h10v10h-10zM30.25.25h10v10h-10zM20.25 70.25h10v10h-10zM20.25 60.25h10v10h-10zM20.25 50.25h10v10h-10zM20.25 40.25h10v10h-10zM20.25 30.25h10v10h-10zM20.25 20.25h10v10h-10zM20.25 10.25h10v10h-10zM20.25.25h10v10h-10zM10.25 60.25h10v10h-10zM10.25 50.25h10v10h-10zM10.25 40.25h10v10h-10zM10.25 30.25h10v10h-10zM10.25 20.25h10v10h-10zM10.25 10.25h10v10h-10zM.25 50.25h10v10h-10zM.25 40.25h10v10h-10zM.25 30.25h10v10h-10zM.25 20.25h10v10h-10z" /></g></svg>
       </MouseStalker>
       <LoadingContext.Provider value={hoge}>
         <Wrapper>
