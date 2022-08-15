@@ -8,12 +8,13 @@ import { font } from '../style/font';
 import { Body } from '../components/Body';
 import { PageTitle } from '../components/PageTitle';
 import { ColorContainer } from '../components/ColorContainer';
-import { fruitsData } from '../components/fruitsData';
-import { privacyPolicy } from '../components/privacyPolicy';
+import { fruitsData } from 'data/fruitsData';
+import data from '../data/data.json'
 import imgMail from '../images/contact-mail.svg';
 
 export const ContactPage = () => {
   const label = 'contact';
+  const privacyPolicyData = data.privacyPolicyData;
   const [openPrivacy, setOpenPrivacy] = useState(false);
   const pageTitleRef = useRef<HTMLHeadingElement>(null);
   const colorHeaderRef = useRef<HTMLDivElement>(null);
@@ -91,7 +92,7 @@ export const ContactPage = () => {
 
     e.preventDefault();
 
-    const token = recaptchaRef.current!.getValue(); // 
+    const token = recaptchaRef.current!.getValue();
     const params = {
       ...toSend,
       'g-recaptcha-response': token,
@@ -129,7 +130,7 @@ export const ContactPage = () => {
         </Header>
         <PrivacyPolicy ref={privacyRef}>
           <h2 id="privacy-title">個人情報保護方針</h2>
-          {privacyPolicy.map((value, key) => {
+          {privacyPolicyData.map((value, key) => {
             return (
               <section className="privacy-section" key={key}>
                 <h3>{value.title}</h3>
@@ -258,5 +259,6 @@ const PrivacyPolicy = styled.div`
   }
   p {
     font-weight: 300;
+    white-space: pre-wrap;
   }
 `;

@@ -3,67 +3,20 @@ import { useEffect } from 'react';
 import styled from 'styled-components';
 import { color } from '../style/color';
 import { font } from '../style/font';
-import { fruitsData } from '../components/fruitsData';
+import { fruitsData } from 'data/fruitsData';
 import { Body } from '../components/Body';
-import { skillData } from '../components/skillData';
 import { PageTitle } from '../components/PageTitle';
 import { SectionTitle } from '../components/SectionTitle';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { breakpoints, mqMin } from '../style/mq';
-
-const SkillList = styled.ul`
-  width: 100%;
-  ${font.pixel10}
-  color: ${color.black};
-  ${mqMin(breakpoints.md)} {
-    padding: 0 20px;
-  }
-`;
-const Gauge = styled.li`
-  position: relative;
-  width: 100%;
-  padding: 4px;
-  margin-bottom: 20px;
-  border-top: 4px solid ${color.yellowEquator};
-  border-bottom: 4px solid ${color.yellowEquator};
-  line-height: 1.1;
-  &:last-child {
-    margin-bottom: 0;
-  }
-  &::before, &::after {
-    content: '';
-    position: absolute;
-    top: 0px;
-    width: 4px;
-    height: 100%;
-    background: ${color.yellowEquator};
-  }
-  &::before {
-    left: -4px;
-  }
-  &::after {
-    right: -4px;
-  }
-  .inner {
-    position: relative; 
-    width: 100%;
-    height: 100%;
-    font-size: 1.5em;
-    background: linear-gradient(0deg, #D3CCE3, #fff 25%);
-    overflow: hidden;
-  }
-  .text {
-    width: 0%;
-    height: 100%;
-    padding: 4px;
-    white-space: nowrap;
-    background: linear-gradient(0deg, ${color.yellowEquator}, ${color.yellowCorn});
-  }
-`;
+import data from '../data/data.json';
 
 export const SkillPage = () => {
   const label = 'skill';
+
+  const skillData = data.skillData;
+
   const pageTitleRef = useRef<HTMLHeadingElement>(null);
 
   gsap.registerPlugin(ScrollTrigger);
@@ -150,3 +103,53 @@ export const SkillPage = () => {
     </Body>
   )
 };
+
+const SkillList = styled.ul`
+  width: 100%;
+  ${font.pixel10}
+  color: ${color.black};
+  ${mqMin(breakpoints.md)} {
+    padding: 0 20px;
+  }
+`;
+const Gauge = styled.li`
+  position: relative;
+  width: 100%;
+  padding: 4px;
+  margin-bottom: 20px;
+  border-top: 4px solid ${color.yellowEquator};
+  border-bottom: 4px solid ${color.yellowEquator};
+  line-height: 1.1;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    width: 4px;
+    height: 100%;
+    background: ${color.yellowEquator};
+  }
+  &::before {
+    left: -4px;
+  }
+  &::after {
+    right: -4px;
+  }
+  .inner {
+    position: relative; 
+    width: 100%;
+    height: 100%;
+    font-size: 1.5em;
+    background: linear-gradient(0deg, #D3CCE3, #fff 25%);
+    overflow: hidden;
+  }
+  .text {
+    width: 0%;
+    height: 100%;
+    padding: 4px;
+    white-space: nowrap;
+    background: linear-gradient(0deg, ${color.yellowEquator}, ${color.yellowCorn});
+  }
+`;

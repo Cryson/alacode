@@ -8,10 +8,93 @@ import { color } from '../style/color';
 import { font } from '../style/font';
 import { Body } from '../components/Body';
 import { PageTitle } from '../components/PageTitle';
-import { serviceData } from '../components/serviceData';
+import { serviceData } from 'data/serviceData';
 import serviceOdd from '../images/service/service-odd.svg';
 import serviceEven from '../images/service/service-even.svg';
-import { fruitsData } from '../components/fruitsData';
+import { fruitsData } from 'data/fruitsData';
+
+export const ServicePage = () => {
+  const label = 'service';
+  const pageTitleRef = useRef<HTMLHeadingElement>(null);
+
+  gsap.registerPlugin(ScrollTrigger);
+  useEffect(() => {
+    serviceData.map((value, key) => {
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: '#rect-foot' + key, // 要素".b"がビューポートに入ったときにアニメーション開始
+          start: 'top bottom', // アニメーション開始位置
+          end: 'top center', // アニメーション終了位置
+        }
+      }).to('#rect-head' + key, { // 動かしたい要素は".b"
+        right: '5%',
+        opacity: 1,
+        scale: 1,
+        rotation: 270, // 開始〜終了までの間で360度回転する
+        ease: "power1.out",
+      }).to('#rect-head' + key, { // 動かしたい要素は".b"
+        top: '7%',
+        rotation: 90, // 開始〜終了までの間で360度回転する
+        duration: 1.2,
+        ease: "bounce.out",
+      });
+
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: '#rect-foot' + key, // 要素".b"がビューポートに入ったときにアニメーション開始
+          start: 'top bottom', // アニメーション開始位置
+          end: 'top center', // アニメーション終了位置
+        }
+      }).to('#rect-foot' + key, { // 動かしたい要素は".b"
+        right: '95%',
+        opacity: 1,
+        rotation: 270, // 開始〜終了までの間で360度回転する
+        scale: 1,
+        ease: "power1.out",
+      }).to('#rect-foot' + key, { // 動かしたい要素は".b"
+        bottom: '-20%',
+        rotation: 90, // 開始〜終了までの間で360度回転する
+        duration: 1.2,
+        ease: "bounce.out",
+      });
+    });
+  }, []);
+
+  return (
+    <Body label={label}>
+      <PageTitle ref={pageTitleRef}>{fruitsData[2].image}サービス</PageTitle>
+      <Title>アクティブな探究心で<br />クリエイティブな遊び心を実現する。</Title>
+      <SubTitle>子供の頃にあったはずの無限大の発想は、大人になって凝り固まってしまったのか。<br />
+        今でも覚えているあの時の感動や衝撃。<br />
+        探究心がくれた知識で、そんなサービスを実現します。</SubTitle>
+      <ServiceMenu>
+        <ul>
+          {serviceData.map((value, key) => {
+            return (<li key={key}><AnchorLink href={`#${value.label}`} offset="50">{value.titleJp}</AnchorLink></li>);
+          })}
+        </ul>
+      </ServiceMenu>
+      {serviceData.map((value, key) => {
+        return (
+          <ServiceSection id={value.label} key={key}>
+            <div className="texts">
+              <h3>{value.titleEn}</h3>
+              <div className="text">
+                <p>{value.text}</p>
+              </div>
+              <Rect id={'rect-head' + (key)} className={'rect -head' + (key % 2 == 0 ? ' -blue' : ' -red')} />
+              <Rect id={'rect-foot' + (key)} className={'rect -foot' + (key % 2 == 0 ? ' -blue' : ' -red')} />
+            </div>
+            <img src={value.image} alt={value.alt} />
+          </ServiceSection>
+        )
+      })}
+      <ServicePrevButton>
+        <AnchorLink href="#root" offset="50">[ ページトップへもどる ]</AnchorLink>
+      </ServicePrevButton>
+    </Body>
+  )
+};
 
 const Title = styled.h2`
   margin: 120px auto 80px;
@@ -181,86 +264,3 @@ const ServicePrevButton = styled.button`
     padding-bottom: 120px;
   }
 `;
-
-export const ServicePage = () => {
-  const label = 'service';
-  const pageTitleRef = useRef<HTMLHeadingElement>(null);
-
-  gsap.registerPlugin(ScrollTrigger);
-  useEffect(() => {
-    serviceData.map((value, key) => {
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: '#rect-foot' + key, // 要素".b"がビューポートに入ったときにアニメーション開始
-          start: 'top bottom', // アニメーション開始位置
-          end: 'top center', // アニメーション終了位置
-        }
-      }).to('#rect-head' + key, { // 動かしたい要素は".b"
-        right: '5%',
-        opacity: 1,
-        scale: 1,
-        rotation: 270, // 開始〜終了までの間で360度回転する
-        ease: "power1.out",
-      }).to('#rect-head' + key, { // 動かしたい要素は".b"
-        top: '7%',
-        rotation: 90, // 開始〜終了までの間で360度回転する
-        duration: 1.2,
-        ease: "bounce.out",
-      });
-
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: '#rect-foot' + key, // 要素".b"がビューポートに入ったときにアニメーション開始
-          start: 'top bottom', // アニメーション開始位置
-          end: 'top center', // アニメーション終了位置
-        }
-      }).to('#rect-foot' + key, { // 動かしたい要素は".b"
-        right: '95%',
-        opacity: 1,
-        rotation: 270, // 開始〜終了までの間で360度回転する
-        scale: 1,
-        ease: "power1.out",
-      }).to('#rect-foot' + key, { // 動かしたい要素は".b"
-        bottom: '-20%',
-        rotation: 90, // 開始〜終了までの間で360度回転する
-        duration: 1.2,
-        ease: "bounce.out",
-      });
-    });
-  }, []);
-
-  return (
-    <Body label={label}>
-      <PageTitle ref={pageTitleRef}>{fruitsData[2].image}サービス</PageTitle>
-      <Title>アクティブな探究心で<br />クリエイティブな遊び心を実現する。</Title>
-      <SubTitle>子供の頃にあったはずの無限大の発想は、大人になって凝り固まってしまったのか。<br />
-        今でも覚えているあの時の感動や衝撃。<br />
-        探究心がくれた知識で、そんなサービスを実現します。</SubTitle>
-      <ServiceMenu>
-        <ul>
-          {serviceData.map((value, key) => {
-            return (<li key={key}><AnchorLink href={`#${value.label}`} offset="50">{value.titleJp}</AnchorLink></li>);
-          })}
-        </ul>
-      </ServiceMenu>
-      {serviceData.map((value, key) => {
-        return (
-          <ServiceSection id={value.label} key={key}>
-            <div className="texts">
-              <h3>{value.titleEn}</h3>
-              <div className="text">
-                <p>{value.text}</p>
-              </div>
-              <Rect id={'rect-head' + (key)} className={'rect -head' + (key % 2 == 0 ? ' -blue' : ' -red')} />
-              <Rect id={'rect-foot' + (key)} className={'rect -foot' + (key % 2 == 0 ? ' -blue' : ' -red')} />
-            </div>
-            <img src={value.image} alt={value.alt} />
-          </ServiceSection>
-        )
-      })}
-      <ServicePrevButton>
-        <AnchorLink href="#root" offset="50">[ ページトップへもどる ]</AnchorLink>
-      </ServicePrevButton>
-    </Body>
-  )
-};

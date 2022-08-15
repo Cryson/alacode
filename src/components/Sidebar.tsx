@@ -2,12 +2,71 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 import gsap from 'gsap';
 import { color } from '../style/color';
-import { breakpoints, mqMin, mqMax, mqRange } from '../style/mq';
+import { breakpoints, mqMin, mqRange } from '../style/mq';
 import { font } from '../style/font';
 import { Link, useLocation } from 'react-router-dom';
-import { sidebarData } from './sidebarData';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import data from '../data/data.json';
+
+export const Sidebar = () => {
+  const sidebarData = data.sidebarData;
+  const hambMenuRef = useRef<HTMLElement>(null);
+  const hambButtonRef = useRef<HTMLButtonElement>(null);
+  const [openHamb, setOpenHamb] = useState(false);
+  const location = useLocation();
+
+  const toLink = () => {
+    setOpenHamb(false);
+  };
+
+  useEffect(() => {
+    if (openHamb) {
+      gsap.to(hambMenuRef.current, {
+        bottom: '2vw'
+      });
+      gsap.to(hambButtonRef.current, {
+        y: '100%'
+      });
+    } else {
+      gsap.to(hambMenuRef.current, {
+        bottom: '-400'
+      });
+      gsap.to(hambButtonRef.current, {
+        y: '0'
+      });
+    }
+  }, [openHamb]);
+
+  return (
+    <SidebarContainer ref={hambMenuRef}>
+      <HamburgerButton ref={hambButtonRef} onClick={() => setOpenHamb(toggle => !toggle)}>Open Menu<div className="borders"><div className="border"></div></div></HamburgerButton>
+      <div className="container">
+        <h2 className="title">MENU</h2>
+        <nav>
+          <ul>
+            {sidebarData.map((value, key) => {
+              if (key !== 6) {
+                return (
+                  <li className={`row${location.pathname === value.link ? ' -active' : ''}`} onClick={() => toLink()} key={key}>
+                    <Link to={value.link}>{value.title}</Link>
+                  </li>
+                )
+              } else {
+                return (
+                  <li className='row -close' onClick={() => { toLink() }} key={key}>
+                    {value.title}
+                    <svg className="close-message-button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25.5 25.5"><g id="grid"><path d="M.25 20.25h5v5h-5zM5.25 15.25h5v5h-5zM20.25 20.25h5v5h-5zM15.25 15.25h5v5h-5zM20.25.25h5v5h-5zM15.25 5.25h5v5h-5zM.25.25h5v5h-5zM5.25 5.25h5v5h-5zM10.25 10.25h5v5h-5z" /><path style={{ fill: 'none' }} d="M20.25 10.25h5v5h-5z" /></g></svg>
+                  </li>
+                )
+              }
+            })}
+          </ul>
+        </nav>
+      </div>
+    </SidebarContainer>
+  );
+}
 
 const SidebarContainer = styled.aside`
   position: fixed;
@@ -148,61 +207,3 @@ const HamburgerButton = styled.button`
     display: none;
   }
 `;
-
-export const Sidebar = () => {
-  const hambMenu = useRef();
-  const hambButton = useRef();
-  const [openHamb, setOpenHamb] = useState(false);
-  const location = useLocation();
-
-  const toLink = () => {
-    setOpenHamb(false);
-  };
-
-  useEffect(() => {
-    if (openHamb) {
-      gsap.to(hambMenu.current, {
-        bottom: '2vw'
-      });
-      gsap.to(hambButton.current, {
-        y: '100%'
-      });
-    } else {
-      gsap.to(hambMenu.current, {
-        bottom: '-400'
-      });
-      gsap.to(hambButton.current, {
-        y: '0'
-      });
-    }
-  }, [openHamb]);
-
-  return (
-    <SidebarContainer ref={hambMenu}>
-      <HamburgerButton ref={hambButton} onClick={() => setOpenHamb(toggle => !toggle)}>Open Menu<div className="borders"><div className="border"></div></div></HamburgerButton>
-      <div className="container">
-        <h2 className="title">MENU</h2>
-        <nav>
-          <ul>
-            {sidebarData.map((value, key) => {
-              if (key !== 6) {
-                return (
-                  <li className={`row${location.pathname === value.link ? ' -active' : ''}`} onClick={() => toLink()} key={key}>
-                    <Link to={value.link}>{value.title}</Link>
-                  </li>
-                )
-              } else {
-                return (
-                  <li className='row -close' onClick={() => { toLink() }} key={key}>
-                    {value.title}
-                    <svg className="close-message-button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25.5 25.5"><g id="grid"><path d="M.25 20.25h5v5h-5zM5.25 15.25h5v5h-5zM20.25 20.25h5v5h-5zM15.25 15.25h5v5h-5zM20.25.25h5v5h-5zM15.25 5.25h5v5h-5zM.25.25h5v5h-5zM5.25 5.25h5v5h-5zM10.25 10.25h5v5h-5z" /><path style={{ fill: 'none' }} d="M20.25 10.25h5v5h-5z" /></g></svg>
-                  </li>
-                )
-              }
-            })}
-          </ul>
-        </nav>
-      </div>
-    </SidebarContainer>
-  );
-}

@@ -1,8 +1,8 @@
-import serviceHplp from '../images/service/service-hplp.svg';
-import serviceWp from '../images/service/service-wp.svg';
-import serviceWebdesign from '../images/service/service-webdesign.svg';
-import serviceCoding from '../images/service/service-coding.svg';
-import servicePixelart from '../images/service/service-pixelart.svg';
+import serviceHplp from 'images/service/service-hplp.svg';
+import serviceWp from 'images/service/service-wp.svg';
+import serviceWebdesign from 'images/service/service-webdesign.svg';
+import serviceCoding from 'images/service/service-coding.svg';
+import servicePixelart from 'images/service/service-pixelart.svg';
 
 export const serviceData = [
   {

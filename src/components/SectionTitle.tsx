@@ -1,6 +1,5 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { breakpoints, mqMin } from '../style/mq';
-import { color } from '../style/color';
 import { font } from '../style/font'
 
 export const SectionTitle = styled.h3`

@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { breakpoints, mqMin, mqMax, mqRange } from '../style/mq';
 import { font } from '../style/font';
-import { fruitsData } from '../components/fruitsData';
+import { fruitsData } from 'data/fruitsData';
 import { Body } from '../components/Body';
 import { PageTitle } from '../components/PageTitle';
 import { SectionTitle } from '../components/SectionTitle';

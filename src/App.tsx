@@ -4,8 +4,8 @@ import gsap from 'gsap';
 import { LoadingContext } from './components/Context';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { breakpoints, mqMax } from './style/mq';
-import { Sidebar } from './components/Sidebar.jsx';
-import { Footer } from './components/Footer.jsx';
+import { Sidebar } from './components/Sidebar';
+import { Footer } from './components/Footer';
 import { LoadingCube } from './components/LoadingCube';
 import { ScrollToTop } from './components/ScrollToTop';
 import { TopPage } from './pages/TopPage';
@@ -15,35 +15,6 @@ import { ServicePage } from './pages/ServicePage';
 import { ItemsPage } from './pages/ItemsPage';
 import { ContactPage } from './pages/ContactPage';
 import { ErrorPage } from './pages/ErrorPage';
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 1280px;
-  background: inherit;
-`;
-const MouseStalker = styled.div`
-  width: 0;
-  height: 0;
-  ${mqMax(breakpoints.sm)} {
-    display: none;
-  }
-  #mouse-stalker {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    width: 40px;
-    height: 40px;
-    margin: -20px 0 0 -20px;
-    pointer-events: none;
-    fill: rgba(255, 255, 255, 0.4);
-  }
-`;
 
 export const App: React.FC = () => {
   const mouseRef = useRef<SVGSVGElement>(null);
@@ -89,3 +60,32 @@ export const App: React.FC = () => {
     </Router>
   );
 }
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1280px;
+  background: inherit;
+`;
+const MouseStalker = styled.div`
+  width: 0;
+  height: 0;
+  ${mqMax(breakpoints.sm)} {
+    display: none;
+  }
+  #mouse-stalker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    pointer-events: none;
+    fill: rgba(255, 255, 255, 0.4);
+  }
+`;

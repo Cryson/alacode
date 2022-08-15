@@ -6,7 +6,7 @@ import { color } from '../style/color';
 import { font } from '../style/font';
 import { vwRange } from '../style/vw';
 import { breakpoints, mqMin } from '../style/mq';
-import { fruitsData } from '../components/fruitsData';
+import { fruitsData } from 'data/fruitsData';
 import { Body } from '../components/Body';
 
 const TitleEn = styled.h2`

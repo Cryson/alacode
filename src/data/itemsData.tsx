@@ -1,13 +1,13 @@
-import imgAlways from '../images/items/items-always.png';
-import imgBouguya from '../images/items/items-bouguya.png';
-import imgCb from '../images/items/items-cb.png';
-import imgDoes from '../images/items/items-does.png';
-import imgHg from '../images/items/items-hg.png';
-import imgMentor from '../images/items/items-mentor@2x.png';
-import imgNomijoshi from '../images/items/items-nomijoshi.png';
-import imgSalways from '../images/items/items-salways.png';
-import imgTrinity from '../images/items/items-trinity.png';
-import imgYsstudio from '../images/items/items-ysstudio.png';
+import imgAlways from 'images/items/items-always.png';
+import imgBouguya from 'images/items/items-bouguya.png';
+import imgCb from 'images/items/items-cb.png';
+import imgDoes from 'images/items/items-does.png';
+import imgHg from 'images/items/items-hg.png';
+import imgMentor from 'images/items/items-mentor@2x.png';
+import imgNomijoshi from 'images/items/items-nomijoshi.png';
+import imgSalways from 'images/items/items-salways.png';
+import imgTrinity from 'images/items/items-trinity.png';
+import imgYsstudio from 'images/items/items-ysstudio.png';
 
 const tagsData = {
   design: {
