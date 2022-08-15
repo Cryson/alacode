@@ -36,8 +36,8 @@
       "level": {
         "HTML5": 100,
         "CSS3": 85,
-        "Sass": 90,
-        "Java Script": 45,
+        "Sass": 85,
+        "Java Script": 40,
         "TypeScript": 15,
         "PHP": 20,
         "Git": 15
@@ -48,7 +48,7 @@
       "title": "FW・ライブラリ",
       "level": {
         "Word Press": 90,
-        "jQuery": 75,
+        "jQuery": 70,
         "React": 30
       }
     },
