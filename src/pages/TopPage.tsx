@@ -6,8 +6,8 @@ import { color } from '../style/color';
 import { font } from '../style/font';
 import { vwRange } from '../style/vw';
 import { breakpoints, mqMin } from '../style/mq';
-import { fruitsData } from './fruitsData';
-import { Body } from './Body';
+import { fruitsData } from '../components/fruitsData';
+import { Body } from '../components/Body';
 
 const TitleEn = styled.h2`
   margin-bottom: 1.5em;

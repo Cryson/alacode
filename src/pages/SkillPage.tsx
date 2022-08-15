@@ -3,11 +3,11 @@ import { useEffect } from 'react';
 import styled from 'styled-components';
 import { color } from '../style/color';
 import { font } from '../style/font';
-import { fruitsData } from './fruitsData';
-import { Body } from './Body';
-import { skillData } from './skillData';
-import { PageTitle } from './PageTitle';
-import { SectionTitle } from './SectionTitle';
+import { fruitsData } from '../components/fruitsData';
+import { Body } from '../components/Body';
+import { skillData } from '../components/skillData';
+import { PageTitle } from '../components/PageTitle';
+import { SectionTitle } from '../components/SectionTitle';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { breakpoints, mqMin } from '../style/mq';
@@ -64,7 +64,7 @@ const Gauge = styled.li`
 
 export const SkillPage = () => {
   const label = 'skill';
-  const pageTitle = useRef();
+  const pageTitleRef = useRef<HTMLHeadingElement>(null);
 
   gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
@@ -126,7 +126,7 @@ export const SkillPage = () => {
 
   return (
     <Body label={label} transparent>
-      <PageTitle ref={pageTitle}>{fruitsData[1].image}スキルレベル</PageTitle>
+      <PageTitle ref={pageTitleRef}>{fruitsData[1].image}スキルレベル</PageTitle>
 
       {skillData.map((category, key) => {
         const data = Object.entries(category.level);

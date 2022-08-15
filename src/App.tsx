@@ -6,15 +6,15 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { breakpoints, mqMax } from './style/mq';
 import { Sidebar } from './components/Sidebar.jsx';
 import { Footer } from './components/Footer.jsx';
-import { TopPage } from './components/TopPage';
-import { ProfilePage } from './components/ProfilePage.jsx';
-import { SkillPage } from './components/SkillPage.jsx';
-import { ServicePage } from './components/ServicePage.jsx';
-import { ItemsPage } from './components/ItemsPage.jsx';
-import { ContactPage } from './components/ContactPage.jsx';
-import { ErrorPage } from './components/ErrorPage.jsx';
 import { LoadingCube } from './components/LoadingCube';
 import { ScrollToTop } from './components/ScrollToTop';
+import { TopPage } from './pages/TopPage';
+import { ProfilePage } from './pages/ProfilePage';
+import { SkillPage } from './pages/SkillPage';
+import { ServicePage } from './pages/ServicePage';
+import { ItemsPage } from './pages/ItemsPage';
+import { ContactPage } from './pages/ContactPage';
+import { ErrorPage } from './pages/ErrorPage';
 
 const Wrapper = styled.div`
   display: flex;

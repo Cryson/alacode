@@ -6,12 +6,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { breakpoints, mqMin, mqMax, mqRange } from '../style/mq';
 import { color } from '../style/color';
 import { font } from '../style/font';
-import { Body } from './Body';
-import { PageTitle } from './PageTitle';
-import { serviceData } from './serviceData';
+import { Body } from '../components/Body';
+import { PageTitle } from '../components/PageTitle';
+import { serviceData } from '../components/serviceData';
 import serviceOdd from '../images/service/service-odd.svg';
 import serviceEven from '../images/service/service-even.svg';
-import { fruitsData } from './fruitsData';
+import { fruitsData } from '../components/fruitsData';
 
 const Title = styled.h2`
   margin: 120px auto 80px;
@@ -184,7 +184,7 @@ const ServicePrevButton = styled.button`
 
 export const ServicePage = () => {
   const label = 'service';
-  const pageTitle = useRef();
+  const pageTitleRef = useRef<HTMLHeadingElement>(null);
 
   gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
@@ -231,7 +231,7 @@ export const ServicePage = () => {
 
   return (
     <Body label={label}>
-      <PageTitle ref={pageTitle}>{fruitsData[2].image}サービス</PageTitle>
+      <PageTitle ref={pageTitleRef}>{fruitsData[2].image}サービス</PageTitle>
       <Title>アクティブな探究心で<br />クリエイティブな遊び心を実現する。</Title>
       <SubTitle>子供の頃にあったはずの無限大の発想は、大人になって凝り固まってしまったのか。<br />
         今でも覚えているあの時の感動や衝撃。<br />

@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { color } from '../style/color';
 import { font } from '../style/font';
 import { breakpoints, mqMax, mqMin } from '../style/mq';
-import { Body } from './Body';
-import { PageTitle } from './PageTitle';
-import { ColorContainer } from './ColorContainer';
-import { fruitsData } from './fruitsData';
-import { itemsData } from './itemsData';
+import { Body } from '../components/Body';
+import { PageTitle } from '../components/PageTitle';
+import { ColorContainer } from '../components/ColorContainer';
+import { fruitsData } from '../components/fruitsData';
+import { itemsData } from '../components/itemsData';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Navigation, Pagination } from "swiper";
 import 'swiper/scss';
@@ -80,17 +80,6 @@ const Overflow = styled.div`
     }
   }
 `;
-// const ItemsDots = styled.ul`
-//   display: flex;
-//   padding: 20px;
-//   > li {
-//     content: '';
-//     width: 16px;
-//     height: 16px;
-//     margin-left: 8px;
-//     background: #fff;
-//   }
-// `;
 const Tags = styled.ul`
   display: flex;
   justify-content: space-between;
@@ -129,11 +118,11 @@ const Text = styled.p`
   }
 `;
 
-export const ItemsPage = ({ complete }) => {
+export const ItemsPage = ({ complete } : {complete: boolean}) => {
   const label = 'items';
-  const pageTitle = useRef();
-  const prevRef = useRef();
-  const nextRef = useRef();
+  const pageTitleRef = useRef<HTMLHeadingElement>(null);
+  const prevRef = useRef<SVGSVGElement>(null);
+  const nextRef = useRef<SVGSVGElement>(null);
 
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -190,7 +179,7 @@ export const ItemsPage = ({ complete }) => {
 
   return (
     <Body label={label}>
-      <PageTitle ref={pageTitle}>{fruitsData[3].image}制作アイテムリスト</PageTitle>
+      <PageTitle ref={pageTitleRef}>{fruitsData[3].image}制作アイテムリスト</PageTitle>
       <ColorContainer page="items" color={color.yellowGamboge} curtain>
         <Overflow>
           <Swiper
@@ -199,15 +188,19 @@ export const ItemsPage = ({ complete }) => {
             onSlideChange={(swiper) => {
               setActiveIndex(swiper.realIndex);
             }}
-            onInit={(swiper) => {
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
-              swiper.navigation.init();
-              swiper.navigation.update();
+            // onInit={(swiper) => {
+            //   swiper.params.navigation.prevEl = prevRef.current;
+            //   swiper.params.navigation.nextEl = nextRef.current;
+            //   swiper.navigation.init();
+            //   swiper.navigation.update();
+            // }}
+            navigation={{
+              prevEl: '.-prev',
+              nextEl: '.-next',
             }}
             observeParents={true}
             observer={true}
-            centeredSlides="true"
+            centeredSlides={true}
             spaceBetween={160}
             slidesPerView={1}
             loop={true}

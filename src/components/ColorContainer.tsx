@@ -3,7 +3,14 @@ import { color } from '../style/color';
 import { breakpoints, mqMin } from '../style/mq';
 import { vwRange } from '../style/vw';
 
-const Wrapper = styled.div`
+type Props = {
+  children: React.ReactNode,
+  page: string,
+  color?: string,
+  curtain?: boolean,
+};
+
+const Wrapper = styled.div<Props>`
   width: 100%;
   ${mqMin(breakpoints.sm)} {
     margin-bottom: 120px;
@@ -65,7 +72,7 @@ const Curtain = styled.div`
   }
 `
 
-export const ColorContainer = ({ children, page, color, curtain }) => {
+export const ColorContainer: React.FC<Props> = ({ children, page, color, curtain }) => {
   return (
     <Wrapper page={page} color={color}>
       <div id={`${page}-container`} className="container">

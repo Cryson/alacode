@@ -2,10 +2,10 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { breakpoints, mqMin, mqMax, mqRange } from '../style/mq';
 import { font } from '../style/font';
-import { fruitsData } from './fruitsData';
-import { Body } from './Body';
-import { PageTitle } from './PageTitle';
-import { SectionTitle } from './SectionTitle';
+import { fruitsData } from '../components/fruitsData';
+import { Body } from '../components/Body';
+import { PageTitle } from '../components/PageTitle';
+import { SectionTitle } from '../components/SectionTitle';
 import avatarSmall from '../images/avatar-small.svg';
 
 const ProfileHeader = styled.div`
@@ -55,22 +55,13 @@ const ProfileStatus = styled.dl`
   }
 `
 
-// const useDelay = msec => {
-//   const [waiting, setWaiting] = useState(true);
-//   useEffect(()=>{
-//     setTimeout(()=> setWaiting(false), msec);
-//   }, [waiting]);
-//   return waiting
-// }
-
 export const ProfilePage = () => {
-  // const waiting = useDelay(2000);
   const label = 'profile';
-  const pageTitle = useRef();
+  const pageTitleRef = useRef<HTMLHeadingElement>(null);
 
   return (
     <Body label={label} transparent>
-      <PageTitle ref={pageTitle}>{fruitsData[0].image}プロフィール</PageTitle>
+      <PageTitle ref={pageTitleRef}>{fruitsData[0].image}プロフィール</PageTitle>
       <section className="section">
         <SectionTitle>
           <span className="title">TESY</span>

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { breakpoints, mqMin, mqMax, mqRange } from '../style/mq';
 import { font } from '../style/font';
-import { Body } from './Body';
+import { Body } from '../components/Body';
 
 const Title = styled.h2`
   margin: 120px auto 80px;

@@ -1,0 +1,10 @@
+.app {
+  height: 100%;
+  color: #fff;
+  background: #000;
+}
+
+.app > div {
+  background: gray;
+}
+/*# sourceMappingURL=style.module.css.map */

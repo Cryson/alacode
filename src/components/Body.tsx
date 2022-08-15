@@ -77,7 +77,7 @@ const Wrapper = styled.main<Props>`
 `;
 
 export const Body: React.FC<Props> = ({ children, label, transparent }) => {
-  const loadingFinish = useContext(LoadingContext);
+  const loadingFinish: Boolean = useContext(LoadingContext);
 
   return (
     <Wrapper label={label} transparent={transparent}>
