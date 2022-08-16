@@ -7,6 +7,7 @@ export const color = {
   grayAlto: '#e0e0e0',
   graySmoke: '#f6f6f6',
   redFin: '#653D52',
+  redPomegranate: '#F4392C',
   redMulberry: '#D7498B',
   redCharm: '#D56388',
   redCarnation: '#FF99CC',

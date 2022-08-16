@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
+import { color } from '../style/color';
 import { breakpoints, mqMin, mqMax, mqRange } from '../style/mq';
 import { font } from '../style/font';
 import { fruitsData } from 'data/fruitsData';
@@ -7,6 +8,39 @@ import { Body } from '../components/Body';
 import { PageTitle } from '../components/PageTitle';
 import { SectionTitle } from '../components/SectionTitle';
 import avatarSmall from '../images/avatar-small.svg';
+
+export const ProfilePage = () => {
+  const label = 'profile';
+  const pageTitleRef = useRef<HTMLHeadingElement>(null);
+
+  return (
+    <Body label={label} transparent>
+      <PageTitle ref={pageTitleRef}>{fruitsData[0].image}プロフィール</PageTitle>
+      <section className="section">
+        <SectionTitle>
+          <span className="title">TESY</span>
+          <span className="subtitle">Webデザイナー /<div>エンジニア</div></span>
+        </SectionTitle>
+        <ProfileHeader>
+          <AvatarCircle><img src={avatarSmall} alt="8bit アバター" /></AvatarCircle>
+          <ProfileStatus>
+            <dt>たいりょく:</dt><dd>100 / 100</dd>
+            <dt>そうび1:</dt><dd>MacBook Pro M1</dd>
+            <dt>そうび2:</dt><dd>Windows</dd>
+          </ProfileStatus>
+        </ProfileHeader>
+        <p>フリーランスのWebデザイナー・コーダー・フロントエンジニア。</p>
+        <p>数年前、独学でコーディングやWP周りを学び、Web制作会社にコーダーとして入社。<br />
+          …のはずが会社にデザイン力を買われ、次第にWebデザインにも注力していく様になる。</p>
+        <p>2年近く勤務した後、フリーランスとして独立。<br />
+          受託案件をこなしたり、メンターとして初学者の方々にスキルを教授したりして過ごす。<br />
+          今ではすっかりフロント技術の虜で、暇さえあればJSを中心に勤勉中。</p>
+        <p>趣味はドライブ・ツーリング・水泳・ランニング・ギター・ドラム・絵描き・ビリヤード・ゲーム・読書など。両利き。</p>
+        <p>サイト名の「alacode」は、フランス語の「à la mode(流行、現代風の)」と「code(コード)」を合わせた造語。</p>
+      </section>
+    </Body>
+  )
+};
 
 const ProfileHeader = styled.div`
   display: flex;
@@ -23,7 +57,7 @@ const AvatarCircle = styled.div`
   height: 140px;
   border: 4px solid #fff;
   border-radius: 50%;
-  background: #F4392C;
+  background: linear-gradient(180deg, ${color.redPomegranate} 64%, ${color.yellowCorn});
   overflow: hidden;
   > img {
     width: 70%;
@@ -54,36 +88,3 @@ const ProfileStatus = styled.dl`
     flex: 1 0 calc(100% - 145px);
   }
 `
-
-export const ProfilePage = () => {
-  const label = 'profile';
-  const pageTitleRef = useRef<HTMLHeadingElement>(null);
-
-  return (
-    <Body label={label} transparent>
-      <PageTitle ref={pageTitleRef}>{fruitsData[0].image}プロフィール</PageTitle>
-      <section className="section">
-        <SectionTitle>
-          <span className="title">TESY</span>
-          <span className="subtitle">Webデザイナー /<div>エンジニア</div></span>
-        </SectionTitle>
-        <ProfileHeader>
-          <AvatarCircle><img src={avatarSmall} alt="8bit アバター" /></AvatarCircle>
-          <ProfileStatus>
-            <dt>たいりょく:</dt><dd>100 / 100</dd>
-            <dt>そうび1:</dt><dd>MacBook Pro M1</dd>
-            <dt>そうび2:</dt><dd>Windows</dd>
-          </ProfileStatus>
-        </ProfileHeader>
-        <p>フリーランスのWebデザイナー・コーダー・フロントエンジニア。</p>
-        <p>数年前、独学でコーディングやWP周りを学び、Web制作会社にコーダーとして入社。<br />
-          …のはずが会社にデザイン力を買われ、次第にWebデザインにも注力していく様になる。</p>
-        <p>2年近く勤務した後、フリーランスとして独立。<br />
-          受託案件をこなしたり、メンターとして初学者の方々にスキルを教授したりして過ごす。<br />
-          今ではすっかりフロント技術の虜で、JSを中心に勤勉し精進中。</p>
-        <p>趣味はドライブ・ツーリング・水泳・ランニング・ギター・ドラム・絵描き・ビリヤード・ゲーム・読書など。両利き。</p>
-        <p>サイト名の「alacode」は、フランス語の「à la mode(流行、現代風の)」と「code(コード)」を合わせた造語。</p>
-      </section>
-    </Body>
-  )
-};
