@@ -1,0 +1,73 @@
+@use '../global' as g;
+
+.hero-container {
+  position: relative;
+  z-index: 1;
+  padding-left: 60px;
+  color: g.$yellow-ironside;
+  @include g.mq-min {
+    padding-left: 80px;
+  }
+  > .visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-width: 200px;
+    background: url('images/hero-top.jpg') center center/ cover no-repeat;
+  }
+  > .visual::before {
+    content: '';
+    display: block;
+    padding-top: 81.7708%;
+  }
+  > .visual > .content {
+    position: absolute;
+    top: 25%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    max-width: 960px;
+    padding: 0 20px;
+    margin: auto;
+  }
+  > .visual > .content > .title,
+  > .visual > .content > .nav {
+    width: 100%;
+  }
+  > .visual > .content > .title {
+    width: 70%;
+    min-width: 200px;
+    max-width: 360px;
+    margin: 0 auto 60px;
+  }
+  > .visual > .content > .nav {
+    display: none;
+    text-align: right;
+    letter-spacing: 0.05em;
+    @include g.mq-min {
+      display: block;
+    }
+  }
+  > .visual > .content > .nav > .menus {
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid #fff;
+    color: #fff;
+    backdrop-filter: blur(2px);
+    pointer-events: none;
+    transition: all 0.3s;
+  }
+  > .visual > .content > .nav > .menus > li {
+    pointer-events: auto;
+    transition: all 0.3s;
+  }
+  > .visual > .content > .nav > .menus > li:hover {
+    opacity: 0.7;
+  }
+  > .visual > .content > .nav > .menus > li > a {
+    display: block;
+    padding: 1em;
+  }
+}

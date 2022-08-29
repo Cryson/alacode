@@ -1,0 +1,50 @@
+// Noto Serif JP
+@font-face {
+  font-family: 'Noto Serif JP';
+  font-style: normal;
+  font-weight: 400;
+  src: local(),
+    url('fonts/noto-serif-jp-regular.woff2') format('woff2'),
+    url('fonts/noto-serif-jp-regular.woff') format('woff'),
+    url('fonts/noto-serif-jp-regular.otf') format('otf'),
+}
+@font-face {
+  font-family: 'Noto Serif JP';
+  font-style: normal;
+  font-weight: 700;
+  src: local(),
+    url('fonts/noto-serif-jp-bold.woff2') format('woff2'),
+    url('fonts/noto-serif-jp-bold.woff') format('woff'),
+    url('fonts/noto-serif-jp-bold.otf') format('otf'),
+}
+
+// Apple Chancery
+@font-face {
+  font-family: 'Apple Chancery';
+  font-style: normal;
+  font-weight: 400;
+  src: local(),
+    url('fonts/apple-chancery.woff2') format('woff2'),
+    url('fonts/apple-chancery.woff') format('woff'),
+    url('fonts/apple-chancery.otf') format('otf'),
+}
+
+// font-family
+$font-mincho: 'Noto Serif JP',
+'游明朝',
+'Yu Mincho',
+'YuMincho',
+'Hiragino Mincho ProN',
+'HGS明朝E',
+'メイリオ',
+'Meiryo',
+serif;
+$font-apple: 'Apple Chancery',
+'游明朝',
+'Yu Mincho',
+'YuMincho',
+'Hiragino Mincho ProN',
+'HGS明朝E',
+'メイリオ',
+'Meiryo',
+serif;

@@ -1,0 +1,45 @@
+@use '../global'as g;
+
+.footer-container {
+  width: 100%;
+  padding: 80px 20px 80px 100px;
+  color: #fff;
+  background: url(images/back-paisley-1.svg) center center/ 640px, g.$blue-slate;
+  @include g.mq-max {
+    padding: 80px 2vw 80px calc(60px + 2vw);
+    background-size: 480px;
+  }
+  > .content {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 960px;
+    margin: 0 auto;
+    @include g.mq-min {
+      justify-content: space-between;
+    }
+  }
+  > .content > .sitemap {
+    flex: 1 1 100%;
+    margin-bottom: 20px;
+    text-align: right;
+  }
+  > .content > .sitemap > .menus > li {
+    margin-bottom: 2em;
+    transition: all 0.3s;
+  }
+  > .content > .sitemap > .menus > li:hover {
+    opacity: 0.7;
+  }
+  > .content > .copyright {
+    margin: 40px auto 0;
+    letter-spacing: 0.06em;
+    text-align: center;
+    @include g.mq-min {
+      order: 0;
+      width: auto;
+      margin: 0;
+    }
+  }
+}
