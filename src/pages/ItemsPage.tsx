@@ -9,9 +9,9 @@ import { ColorContainer } from '../components/ColorContainer';
 import { fruitsData } from 'data/fruitsData';
 import { itemsData } from 'data/itemsData';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Navigation, Pagination } from "swiper";
+import { EffectCoverflow, Navigation, Pagination } from 'swiper';
 import 'swiper/scss';
-import "swiper/scss/effect-coverflow";
+import 'swiper/scss/effect-coverflow';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 
@@ -118,7 +118,7 @@ const Text = styled.p`
   }
 `;
 
-export const ItemsPage = ({ complete } : {complete: boolean}) => {
+export const ItemsPage = ({ complete }: { complete: boolean }) => {
   const label = 'items';
   const pageTitleRef = useRef<HTMLHeadingElement>(null);
   const prevRef = useRef<SVGSVGElement>(null);
@@ -127,40 +127,7 @@ export const ItemsPage = ({ complete } : {complete: boolean}) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    // setTimeout(() => {
-    //   setActiveIndex(0);
-    // }, 1);
-
-    // console.log(complete);
-
-    // const tl = gsap.timeline();
-    // tl.from('#items-container', {
-    //   opacity: 0,
-    //   rotate: 0,
-    // }).from('#items-container', {
-    //   duration: 0.07,
-    //   rotation: 15,
-    //   repeat: 6,
-    //   yoyo: true,
-    // }).from('.light', {
-    //   opacity: 0.4,
-    //   display: 'block'
-    // }).fromTo('#items-container', {
-    //   width: 20,
-    //   height: 20,
-    // }, {
-    //   width: '100%',
-    //   height: '100%',
-    //   margin: 0,
-    //   delay: -0.2,
-    //   ease: "back.in(1)",
-    // }).from([pageTitle.current, '.curtain', '.swiper'], {
-    //   delay: 0.1,
-    //   opacity: 0,
-    // });
-
     // const mql = window.matchMedia(`(min-width: ${breakpoints.sm}px)`);
-
     // const listener = (e) => {
     //   // リサイズ時に行う処理
     //   if (e.matches) {
@@ -169,17 +136,17 @@ export const ItemsPage = ({ complete } : {complete: boolean}) => {
     //     console.log('SP用処理');
     //   }
     // };
-
     // // リスナー登録
     // mql.addEventListener('change', listener);
-
     // // 初期化処理
     // listener(mql);
   }, []);
 
   return (
     <Body label={label}>
-      <PageTitle ref={pageTitleRef}>{fruitsData[3].image}制作アイテムリスト</PageTitle>
+      <PageTitle ref={pageTitleRef}>
+        {fruitsData[3].image}制作アイテムリスト
+      </PageTitle>
       <ColorContainer page="items" color={color.yellowGamboge} curtain>
         <Overflow>
           <Swiper
@@ -216,7 +183,7 @@ export const ItemsPage = ({ complete } : {complete: boolean}) => {
             breakpoints={{
               560: {
                 slidesPerView: 2,
-              }
+              },
             }}
           >
             {itemsData.map((data, key) => {
@@ -226,16 +193,32 @@ export const ItemsPage = ({ complete } : {complete: boolean}) => {
                     <img src={data.image} alt={data.alt} />
                   </a>
                 </SwiperSlide>
-              )
+              );
             })}
-            <svg ref={prevRef} className="page-nav -prev" viewBox="0 0 28.5 28.5" xmlns="http://www.w3.org/2000/svg"><path d="M24.25.25h4v4h-4zM18.25 6.25h4v4h-4zM18.25.25h4v4h-4zM12.25 12.25h4v4h-4zM12.25 6.25h4v4h-4zM12.25.25h4v4h-4zM6.25 6.25h4v4h-4zM6.25.25h4v4h-4zM.25.25h4v4h-4z" /></svg>
-            <svg ref={nextRef} className="page-nav -next" viewBox="0 0 28.5 28.5" xmlns="http://www.w3.org/2000/svg"><path d="M24.25.25h4v4h-4zM18.25 6.25h4v4h-4zM18.25.25h4v4h-4zM12.25 12.25h4v4h-4zM12.25 6.25h4v4h-4zM12.25.25h4v4h-4zM6.25 6.25h4v4h-4zM6.25.25h4v4h-4zM.25.25h4v4h-4z" /></svg>
+            <svg
+              ref={prevRef}
+              className="page-nav -prev"
+              viewBox="0 0 28.5 28.5"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M24.25.25h4v4h-4zM18.25 6.25h4v4h-4zM18.25.25h4v4h-4zM12.25 12.25h4v4h-4zM12.25 6.25h4v4h-4zM12.25.25h4v4h-4zM6.25 6.25h4v4h-4zM6.25.25h4v4h-4zM.25.25h4v4h-4z" />
+            </svg>
+            <svg
+              ref={nextRef}
+              className="page-nav -next"
+              viewBox="0 0 28.5 28.5"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M24.25.25h4v4h-4zM18.25 6.25h4v4h-4zM18.25.25h4v4h-4zM12.25 12.25h4v4h-4zM12.25 6.25h4v4h-4zM12.25.25h4v4h-4zM6.25 6.25h4v4h-4zM6.25.25h4v4h-4zM.25.25h4v4h-4z" />
+            </svg>
             <div className="content">
               <h3 className="title">{itemsData[activeIndex].title}</h3>
               <Tags>
                 {itemsData[activeIndex].tags.map((value, key) => {
                   return (
-                    <li className={value.class} key={key}>{value.name}</li>
+                    <li className={value.class} key={key}>
+                      {value.name}
+                    </li>
                   );
                 })}
               </Tags>
@@ -243,7 +226,9 @@ export const ItemsPage = ({ complete } : {complete: boolean}) => {
           </Swiper>
         </Overflow>
       </ColorContainer>
-      <Text>その他、一部の簡易的な案件や掲載しきれないものなどございます。</Text>
+      <Text>
+        その他、一部の簡易的な案件や掲載しきれないものなどございます。
+      </Text>
     </Body>
-  )
+  );
 };
