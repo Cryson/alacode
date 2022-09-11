@@ -20,7 +20,7 @@ export const ProfilePage = () => {
       </PageTitle>
       <section className="section">
         <SectionTitle>
-          <span className="title">Sasaki</span>
+          <span className="title">テシャ</span>
           <span className="subtitle">
             Webデザイナー /<div>エンジニア</div>
           </span>
