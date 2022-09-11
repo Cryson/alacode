@@ -15,31 +15,52 @@ export const ProfilePage = () => {
 
   return (
     <Body label={label} transparent>
-      <PageTitle ref={pageTitleRef}>{fruitsData[0].image}プロフィール</PageTitle>
+      <PageTitle ref={pageTitleRef}>
+        {fruitsData[0].image}プロフィール
+      </PageTitle>
       <section className="section">
         <SectionTitle>
-          <span className="title">TESY</span>
-          <span className="subtitle">Webデザイナー /<div>エンジニア</div></span>
+          <span className="title">Sasaki</span>
+          <span className="subtitle">
+            Webデザイナー /<div>エンジニア</div>
+          </span>
         </SectionTitle>
         <ProfileHeader>
-          <AvatarCircle><img src={avatarSmall} alt="8bit アバター" /></AvatarCircle>
+          <AvatarCircle>
+            <img src={avatarSmall} alt="8bit アバター" />
+          </AvatarCircle>
           <ProfileStatus>
-            <dt>たいりょく:</dt><dd>100 / 100</dd>
-            <dt>そうび1:</dt><dd>MacBook Pro M1</dd>
-            <dt>そうび2:</dt><dd>Windows</dd>
+            <dt>たいりょく:</dt>
+            <dd>100 / 100</dd>
+            <dt>そうび1:</dt>
+            <dd>MacBook Pro M1</dd>
+            <dt>そうび2:</dt>
+            <dd>Windows</dd>
           </ProfileStatus>
         </ProfileHeader>
         <p>Webデザイナー・コーダー・フロントエンジニア。</p>
-        <p>数年前、独学でコーディングやWP周りを学び、Web制作会社にコーダーとして入社。<br />
-          …のはずが会社にデザイン力を買われ、次第にWebデザインにも注力していく様になる。</p>
-        <p>2年近く勤務した後、フリーランスとして独立。<br />
-          受託案件をこなしたり、メンターとして初学者の方々にスキルを教授したりして過ごす。<br />
-          今ではすっかりフロント技術の虜で、暇さえあればJSを中心に勤勉中。</p>
-        <p>趣味はドライブ・ツーリング・水泳・ランニング・ギター・ドラム・絵描き・ゲーム・読書など。両利き。</p>
-        <p>サイト名の「alacode」は、フランス語の「à la mode(流行、現代風の)」と「code(コード)」を合わせた造語。</p>
+        <p>
+          数年前、独学でコーディングやWP周りを学び、Web制作会社にコーダーとして入社。
+          <br />
+          …のはずが会社にデザイン力を買われ、次第にWebデザインにも注力していく様になる。
+        </p>
+        <p>
+          2年近く勤務した後、フリーランスとして独立。
+          <br />
+          受託案件をこなしたり、メンターとして初学者の方々にスキルを教授したりして過ごす。
+          <br />
+          今ではすっかりフロント技術の虜で、暇さえあればJSを中心に勤勉中。
+        </p>
+        <p>
+          趣味はドライブ・ツーリング・水泳・ランニング・ギター・ドラム・絵描き・ゲーム・読書など。両利き。
+        </p>
+        <p>
+          サイト名の「alacode」は、フランス語の「à la
+          mode(流行、現代風の)」と「code(コード)」を合わせた造語。
+        </p>
       </section>
     </Body>
-  )
+  );
 };
 
 const ProfileHeader = styled.div`
@@ -57,7 +78,11 @@ const AvatarCircle = styled.div`
   height: 140px;
   border: 4px solid #fff;
   border-radius: 50%;
-  background: linear-gradient(180deg, ${color.redPomegranate} 64%, ${color.yellowCorn});
+  background: linear-gradient(
+    180deg,
+    ${color.redPomegranate} 64%,
+    ${color.yellowCorn}
+  );
   overflow: hidden;
   > img {
     width: 70%;
@@ -78,7 +103,8 @@ const ProfileStatus = styled.dl`
     padding-left: 5%;
     margin-top: 0;
   }
-  > dt, > dd {
+  > dt,
+  > dd {
     padding: 0.4em 0.2em;
   }
   > dt {
@@ -87,4 +113,4 @@ const ProfileStatus = styled.dl`
   > dd {
     flex: 1 0 calc(100% - 145px);
   }
-`
+`;
