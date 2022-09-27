@@ -23,24 +23,32 @@ export const Sidebar = () => {
   useEffect(() => {
     if (openHamb) {
       gsap.to(hambMenuRef.current, {
-        bottom: '2vw'
+        bottom: '2vw',
       });
       gsap.to(hambButtonRef.current, {
-        y: '100%'
+        y: '100%',
       });
     } else {
       gsap.to(hambMenuRef.current, {
-        bottom: '-400'
+        bottom: '-400',
       });
       gsap.to(hambButtonRef.current, {
-        y: '0'
+        y: '0',
       });
     }
   }, [openHamb]);
 
   return (
     <SidebarContainer ref={hambMenuRef}>
-      <HamburgerButton ref={hambButtonRef} onClick={() => setOpenHamb(toggle => !toggle)}>Open Menu<div className="borders"><div className="border"></div></div></HamburgerButton>
+      <HamburgerButton
+        ref={hambButtonRef}
+        onClick={() => setOpenHamb((toggle) => !toggle)}
+      >
+        Open Menu
+        <div className="borders">
+          <div className="border"></div>
+        </div>
+      </HamburgerButton>
       <div className="container">
         <h2 className="title">MENU</h2>
         <nav>
@@ -48,17 +56,41 @@ export const Sidebar = () => {
             {sidebarData.map((value, key) => {
               if (key !== 6) {
                 return (
-                  <li className={`row${location.pathname === value.link ? ' -active' : ''}`} onClick={() => toLink()} key={key}>
+                  <li
+                    className={`row${
+                      location.pathname === value.link ? ' -active' : ''
+                    }`}
+                    onClick={() => toLink()}
+                    key={key}
+                  >
                     <Link to={value.link}>{value.title}</Link>
                   </li>
-                )
+                );
               } else {
                 return (
-                  <li className='row -close' onClick={() => { toLink() }} key={key}>
+                  <li
+                    className="row -close"
+                    onClick={() => {
+                      toLink();
+                    }}
+                    key={key}
+                  >
                     {value.title}
-                    <svg className="close-message-button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25.5 25.5"><g id="grid"><path d="M.25 20.25h5v5h-5zM5.25 15.25h5v5h-5zM20.25 20.25h5v5h-5zM15.25 15.25h5v5h-5zM20.25.25h5v5h-5zM15.25 5.25h5v5h-5zM.25.25h5v5h-5zM5.25 5.25h5v5h-5zM10.25 10.25h5v5h-5z" /><path style={{ fill: 'none' }} d="M20.25 10.25h5v5h-5z" /></g></svg>
+                    <svg
+                      className="close-message-button"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 25.5 25.5"
+                    >
+                      <g id="grid">
+                        <path d="M.25 20.25h5v5h-5zM5.25 15.25h5v5h-5zM20.25 20.25h5v5h-5zM15.25 15.25h5v5h-5zM20.25.25h5v5h-5zM15.25 5.25h5v5h-5zM.25.25h5v5h-5zM5.25 5.25h5v5h-5zM10.25 10.25h5v5h-5z" />
+                        <path
+                          style={{ fill: 'none' }}
+                          d="M20.25 10.25h5v5h-5z"
+                        />
+                      </g>
+                    </svg>
                   </li>
-                )
+                );
               }
             })}
           </ul>
@@ -66,7 +98,7 @@ export const Sidebar = () => {
       </div>
     </SidebarContainer>
   );
-}
+};
 
 const SidebarContainer = styled.aside`
   position: fixed;
@@ -167,9 +199,13 @@ const SidebarContainer = styled.aside`
     margin: 0 0 -0.15em 0.5em;
     fill: #fff;
     animation: blink 1s ease infinite alternate;
-    @keyframes blink{
-      0% {opacity:0;}
-      100% {opacity:1;}
+    @keyframes blink {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
     }
   }
 `;
@@ -189,7 +225,8 @@ const HamburgerButton = styled.button`
   ${font.pixel10}
   font-size: 2em;
   text-align: center;
-  &::before, .borders {
+  &::before,
+  .borders {
     content: '';
     display: flex;
     flex-direction: column;
@@ -197,7 +234,9 @@ const HamburgerButton = styled.button`
     width: 32px;
     height: 24px;
   }
-  .borders::before, .borders::after, .border {
+  .borders::before,
+  .borders::after,
+  .border {
     content: '';
     width: 100%;
     height: 3px;

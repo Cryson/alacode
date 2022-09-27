@@ -94,7 +94,8 @@ const Tags = styled.ul`
     color: ${color.redCarnation};
     border: 2px solid ${color.redCarnation};
   }
-  > li.-coding {
+  > li.-coding,
+  > li.-react {
     color: ${color.yellowGrandis};
     border: 2px solid ${color.yellowGrandis};
   }
