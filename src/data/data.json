@@ -51,7 +51,8 @@
         "jQuery": 66,
         "React": 33,
         "Next.js": 33,
-        "GSAP": 10
+        "GSAP": 10,
+        "Laravel": 2
       }
     },
     {
@@ -65,7 +66,8 @@
         "Affinity Photo": 60,
         "Affinity Publisher": 40,
         "Figma": 80,
-        "AWS": 10
+        "AWS": 10,
+        "Docker": 5
       }
     }
   ],
