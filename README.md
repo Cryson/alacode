@@ -5,6 +5,7 @@
 
 ## 技術選定
 
+- Docker
 - React
 - React Router
 - TypeScript
@@ -24,4 +25,4 @@ React, TypeScriptで作成したポートフォリオサイト。
 ## 将来的な実装
 
 いずれはNext.jsに移行していきたい。  
-背景のドット絵PCなどはIllustratorで作成したSVGですが、Three.js を導入しより動きのある3D空間を実装することが目標。
+背景のドット絵PCなどはIllustratorで作成したSVGですが、Three.jsを導入しより動きのある3D空間を実装することが目標。
