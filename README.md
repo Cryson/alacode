@@ -5,7 +5,6 @@
 
 ## 技術選定
 
-- Docker
 - React
 - React Router
 - TypeScript
@@ -16,11 +15,11 @@
 - Swiper.js
 - AWS Amplify
 - AWS Route 53
+- Docker
 
 ## 所感
 
-React, TypeScriptで作成したポートフォリオサイト。  
-
+React, TypeScriptで作成したポートフォリオサイト。
 
 ## 将来的な実装
 
